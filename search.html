@@ -9,17 +9,18 @@
 	</script>
 	<script>
 		$(function(){
-			$("head").load("./partials/header.html"); 
-			$("body").load("./partials/nav.html"); 
+			$("head").load("./partials/header.html");
+			$("nav").load("./partials/nav.html");  
 		});
 		window.onload = function() {
-			createLogIn();
+			createSearchBar();
 		};
 	</script>
 
 
 </head>
 <body>
-	<div class="log-in"></div>
+	<nav></nav>
+	<div class="search"></div>
 </body>
 </html>
