@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo|Open+Sans');
+
+/*******Global*******/
+:root {
+    --main-white: #ffffff;
+    --main-black: #423E3A;
+    --main-light-purple: #8D52FE; 
+    --main-dark-purple: #6631FC; 
+    --main-dark-grey: #BBBCD2;
+    --main-light-grey: #EAEEF5;
+}
+
