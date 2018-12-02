@@ -15,7 +15,12 @@
 		window.onload = function() {
 			createSearchBar();
 			createFilter();
-			createGrid();
+			createGrid("logourl","airline","flightNum",
+					"depTime","arrTime","duration",
+					"depPort","arrPort","price");
+			createGrid("logourl","airline","flightNum",
+					"depTime","arrTime","duration",
+					"depPort","arrPort","price");
 		};
 	</script>
 
@@ -25,7 +30,10 @@
 	<nav></nav>
 	<div class="container">
 		<div class="search"></div>
-		<div class="searchResult row"></div>
+		<div class="searchResult row">
+			<div class="searchFilter col-lg-4"></div>
+			<div class="resultBox col-lg-8 row"></div>			
+		</div>
 	</div>
 </body>
 </html>

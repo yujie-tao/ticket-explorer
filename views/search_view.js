@@ -1,4 +1,3 @@
-
 function createSearchBar(){
 	 var searchBox= $('<div>',{
 	 	class: "searchBox"
@@ -18,9 +17,7 @@ function createSearchBar(){
 }
 
 function createFilter(){
-	var filter= $('<div>',{
-	 	class: "searchFilters col-lg-4"
-	 }).appendTo($('.searchResult'))
+	var filter= $('.searchFilter');
 	var priceFilter= $('<div>',{
 	 	class: "priceFilter filter"
 	 }).appendTo(filter)
@@ -112,9 +109,85 @@ function createFilter(){
 	 }).appendTo(airlineFilter)
 }
 
-function createGrid(){
-	var resultBox= $('<div>',{
-	 	class: "resultBox col-lg-8"
-	 }).appendTo($('.searchResult'))
+function createGrid(logourl,airline,flightNum,
+					depTime,arrTime,duration,
+					depPort,arrPort,price){
+	var result= $('<div>',{
+	 	class: "result col-lg-8 row"
+	 }).appendTo($('.resultBox'))
+	$('<img>',{
+	 	class: "logo",
+	 	src: logourl
+	 }).appendTo(result)
+
+	var table= $('<table>',{
+	 	class: "tickettableo"
+	 }).appendTo(result)
+
+	var ticketInfoRow1= $('<tr>',{
+	 	class: "ticketInfo"
+	 }).appendTo(table)
+
+
+	var time= $('<th>',{
+	 	class: "time"
+	 }).appendTo(ticketInfoRow1)
+
+	$('<h5>',{
+	 	html: depTime+'-'+arrTime
+	 }).appendTo(time)
+
+	var dura= $('<th>',{
+	 	class: "duration"
+	 }).appendTo(ticketInfoRow1)
+
+	$('<h4>',{
+	 	html: duration
+	 }).appendTo(dura)
+
+
+	var pricing= $('<th>',{
+	 	class: "pricing"
+	 }).appendTo(ticketInfoRow1)
+
+	$('<h4>',{
+	 	html: price
+	 }).appendTo(pricing)
+
+	var ticketInfoRow2= $('<tr>',{
+	 	class: "ticketInfo"
+	 }).appendTo(table)
+
+
+	var flight= $('<td>',{
+	 	class: "flight"
+	 }).appendTo(ticketInfoRow2)
+
+	$('<p>',{
+	 	html: airline
+	 }).appendTo(flight)
+
+
+	var airports= $('<td>',{
+	 	class: "airport"
+	 }).appendTo(ticketInfoRow2)
+
+	$('<p>',{
+	 	html: depPort+'-'+'arrPort'
+	 }).appendTo(airports)
+
+
+	var trip= $('<td>',{
+	 	class: "trip"
+	 }).appendTo(ticketInfoRow2)
+
+	$('<p>',{
+		html:'singleTrip'
+	 }).appendTo(trip)
+
+	 $('<i>',{
+	 	class: "fa fa-angle-down"
+	 }).appendTo(result)
+
 }
 
