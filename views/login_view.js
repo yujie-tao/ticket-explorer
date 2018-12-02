@@ -7,7 +7,6 @@ function createLogIn(){
 	 	html: "welcome"
 	 }).appendTo(logInBox)
 	 $('<h6>',{
-	 	class: "username",
 	 	html: "username"
 	 }).appendTo(logInBox)
 	 $('<input>',{
@@ -15,7 +14,6 @@ function createLogIn(){
 	 	type:"text"
 	 }).appendTo(logInBox)
 	 $('<h6>',{
-	 	class: "password",
 	 	html: "password"
 	 }).appendTo(logInBox)
 	 $('<input>',{
