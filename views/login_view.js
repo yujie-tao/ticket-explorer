@@ -1,3 +1,7 @@
+$( document ).ready(function() {
+	createLogIn();
+});
+
 function createLogIn(){
 	 var logInBox= $('<div>',{
 	 	class: "logInBox"
@@ -28,4 +32,3 @@ function createLogIn(){
 	 	onclick: ""
 	 }).appendTo(logInBox)
 }
-

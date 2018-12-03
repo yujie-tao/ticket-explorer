@@ -1,3 +1,14 @@
+$( document ).ready(function() {
+	createSearchBar();
+	createFilter();
+	createGrid("logourl","airline","flightNum",
+					"depTime","arrTime","duration",
+					"depPort","arrPort","price","id");
+	createGrid("logourl","airline","flightNum",
+					"depTime","arrTime","duration",
+					"depPort","arrPort","price","id2");
+});
+
 function createSearchBar(){
 	 var searchBox= $('<div>',{
 	 	class: "searchBox"
@@ -111,18 +122,29 @@ function createFilter(){
 
 function createGrid(logourl,airline,flightNum,
 					depTime,arrTime,duration,
-					depPort,arrPort,price){
+					depPort,arrPort,price,
+					id){
 	var result= $('<div>',{
-	 	class: "result col-lg-8 row"
+	 	class: "result btn btn-link",
+	 	id: "info"+id,
+	 	type: "button",
 	 }).appendTo($('.resultBox'))
+
+	$(result).attr("data-toggle","collapse");
+	$(result).attr("data-target","#"+'booking'+id);
+
+	var info= $('<button>',{
+	 	class: "info row"
+	 }).appendTo(result)
+
 	$('<img>',{
 	 	class: "logo",
 	 	src: logourl
-	 }).appendTo(result)
+	 }).appendTo(info)
 
 	var table= $('<table>',{
 	 	class: "tickettableo"
-	 }).appendTo(result)
+	 }).appendTo(info)
 
 	var ticketInfoRow1= $('<tr>',{
 	 	class: "ticketInfo"
@@ -187,7 +209,68 @@ function createGrid(logourl,airline,flightNum,
 
 	 $('<i>',{
 	 	class: "fa fa-angle-down"
+	 }).appendTo(info)
+
+
+	var booking= $('<div>',{
+	 	class: "booking collapse",
+	 	id:"booking"+id
 	 }).appendTo(result)
+
+	$(booking).attr("data-parent","#info"+id);
+
+	$('<h6>',{
+	 	html: "First name"
+	 }).appendTo(booking)
+	 $('<input>',{
+	 	id: "book-fname-"+id,
+	 	type:"text"
+	 }).appendTo(booking)
+
+	 $('<h6>',{
+	 	html: "Middle name"
+	 }).appendTo(booking)
+	 $('<input>',{
+	 	id: "book-mname-"+id,
+	 	type:"text"
+	 }).appendTo(booking)
+
+	  $('<h6>',{
+	 	html: "Last name"
+	 }).appendTo(booking)
+	 $('<input>',{
+	 	id: "book-lname-"+id,
+	 	type:"text"
+	 }).appendTo(booking)
+
+	 $('<h6>',{
+	 	html: "Gender"
+	 }).appendTo(booking)
+	 $('<input>',{
+	 	id: "book-gender-"+id,
+	 	type:"text"
+	 }).appendTo(booking)
+
+	 $('<h6>',{
+	 	html: "Age"
+	 }).appendTo(booking)
+	 $('<input>',{
+	 	id: "book-age-"+id,
+	 	type:"number"
+	 }).appendTo(booking)
+
+	 $('<h6>',{
+	 	html: "Email"
+	 }).appendTo(booking)
+	 $('<input>',{
+	 	id: "book-email-"+id,
+	 	type:"email"
+	 }).appendTo(booking)
+
+	  $('<input>',{
+	 	id: "book-submit-"+id,
+	 	type:"submit"
+	 }).appendTo(booking)
 
 }
 
