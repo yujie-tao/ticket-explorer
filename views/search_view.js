@@ -28,6 +28,7 @@ function createSearchBar(){
 	 $('<input>',{
 	 	id: "ticketSearch",
 	 	type:"text",
+	 	class:"col-lg-8 searchBar",
 	 	placeholder: "I want a flight from RDU to SFO on Dec.20…"
 	 }).appendTo(searchBox)
 	  $('<i>',{

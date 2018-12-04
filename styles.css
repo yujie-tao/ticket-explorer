@@ -12,6 +12,10 @@
 
 h1{
 	font-family: 'Arimo', sans-serif;
+	text-align: center;
+	background-color: var(--main-dark-purple);
+	color: white;
+	text-transform: uppercase;
 }
 
 h2{
@@ -55,6 +59,14 @@ button{
 	position: relative;
 }
 
+.navbar{
+	background-color: var(--main-dark-purple);
+}
+.navbar-light .navbar-nav .nav-link{
+	color: white;
+}
+
+
 /*******Regional*******/
 .block{
 	margin-bottom: 40px;
@@ -82,5 +94,16 @@ button{
 	margin: auto;
 	margin-top: 20vh;
 	padding: 0px;
+}
+
+/*******Search Page*******/
+.searchBox{
+	background-color: var(--main-dark-purple);
+}
+.searchResult{
+	margin: auto;
+}
+.searchBar{
+	margin: auto;
 }
 
