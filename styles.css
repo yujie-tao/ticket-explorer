@@ -2,12 +2,12 @@
 
 /*******Global*******/
 :root {
-    --main-white: #ffffff;
-    --main-black: #423E3A;
-    --main-light-purple: #8D52FE; 
-    --main-dark-purple: #6631FC; 
-    --main-dark-grey: #BBBCD2;
-    --main-light-grey: #EAEEF5;
+	--main-white: #ffffff;
+	--main-black: #423E3A;
+	--main-light-purple: #8D52FE; 
+	--main-dark-purple: #6631FC; 
+	--main-dark-grey: #BBBCD2;
+	--main-light-grey: #EAEEF5;
 }
 
 h1{
@@ -34,14 +34,14 @@ p{
 }
 
 input[type=text] {
-    border: none;
-    border-bottom: 1px solid var(--main-dark-grey);
-    width: 100%;
+	border: none;
+	border-bottom: 1px solid var(--main-dark-grey);
+	width: 100%;
 }
 
 input:focus{
-    outline: none;
-    color: var(--main-black);
+	outline: none;
+	color: var(--main-black);
 }
 
 button:focus{
