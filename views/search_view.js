@@ -55,14 +55,23 @@ function createFilter(){
 
 
 	var timeFilter= $('<div>',{
-	 	class: "timeFilter filter"
+		class: "timeFilter filter"
 	 }).appendTo(filter)
 	$('<h6>',{
 	 	html: "Departure time"
 	 }).appendTo(timeFilter)
+	// $('<input>',{
+	//  	id: "amount"
+	//  }).appendTo(timeFilter)
+
+	$('<div>',{
+	 	id: "slider-range"
+	 }).appendTo(timeFilter)
+
 	$('<h6>',{
 	 	html: "Arrival time"
 	 }).appendTo(timeFilter)
+
 
 	var airlineFilter= $('<div>',{
 	 	class: "airlineFilter filter"
@@ -119,6 +128,21 @@ function createFilter(){
 	 	html: "Other Airlines"
 	 }).appendTo(airlineFilter)
 }
+
+// $( function() {
+// 	    $( "#slider-range" ).slider({
+// 	      range: true,
+// 	      min: 0,
+// 	      max: 500,
+// 	      values: [ 75, 300 ],
+// 	      slide: function( event, ui ) {
+// 	        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+// 	      }
+// 	    });
+// 	    $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+// 	      " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+//   });
+
 
 function createGrid(logourl,airline,flightNum,
 					depTime,arrTime,duration,

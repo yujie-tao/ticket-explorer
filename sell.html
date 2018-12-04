@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script
+	    src="https://code.jquery.com/jquery-3.3.1.js"
+	    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+	    crossorigin="anonymous">
+	</script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
+		$( document ).ready(function() {
+    		$("head").load("./partials/header.html");
+			$("nav").load("./partials/nav.html"); 
+		});
+	</script>
+
+
+</head>
+<body>
+	<div class="container">
+		<nav></nav>
+		<div class="sell">
+			<div class"personal-info">
+				<h3>Personal Information</h3>
+				<div class ="block">
+					<h6 for="sell-fname">First name</h6>
+					<input type="text" id="sell-fname" name="sell-fname" placeholder="">
+				</div>
+
+				<div class="block">
+		    		<h6 for="sell-lname">Middle name</h6>
+		    		<input type="text" id="sell-mname" name="sell-mname" placeholder="">
+		 		</div>
+
+				<div class="block">
+		    		<h6 for="sell-lname">Last name</h6>
+		    		<input type="text" id="sell-lname" name="sell-lname" placeholder="">
+		 		</div>
+
+		 		<div class="block">
+				    <h6 for="sell-gender">Gender</h6>
+				    <input type="email" id="sell-gender" name="sell-email" placeholder="">
+			  	</div>
+				<div class="block">
+				    <h6 for="sell-age">Age</h6>
+				    <input type="number" id="sell-age" name="sell-age" placeholder="">
+				</div>
+				<div class="block">
+				    <h6 for="sell-email">Email</h6>
+				    <input type="number" id="sell-email" name="sell-agea" placeholder="">
+				</div>
+			</div>
+
+			<div class"ticket-info">
+				<h3>Ticket Information</h3>
+				<div class ="block">
+					<h6 for="sell-aname">Airline name</h6>
+					<input type="text" id="sell-aname" name="sell-aname" placeholder="">
+				</div>
+
+				<div class="block">
+		    		<h6 for="sell-fnum">Middle name</h6>
+		    		<input type="number" id="sell-fnum" name="sell-fnum" placeholder="">
+		 		</div>
+
+				<div class="block">
+		    		<h6 for="sell-comCode">Confirmation code</h6>
+		    		<input type="text" id="sell-comCode" name="sell-comCode" placeholder="">
+		 		</div>
+
+		 		<div class="block">
+				    <h6 for="sell-gender">Gender</h6>
+				    <input type="email" id="sell-gender" name="sell-email" placeholder="">
+			  	</div>
+				<div class="block">
+				    <h6 for="sell-dePort">Departure airport</h6>
+				    <input type="text" id="sell-dePort" name="sell-dePort" placeholder="">
+				</div>
+				<div class="block">
+				    <h6 for="sell-arrPort">Arrival airport</h6>
+				    <input type="text" id="sell-arrPort" name="sell-arrPort" placeholder="">
+				</div>
+				<div class="block">
+				    <h6 for="sell-deTime">Departure Time</h6>
+				    <input type="time" id="sell-deTime" name="sell-deTime" placeholder="">
+				    <input type="date" id="sell-deDate" name="sell-Date" placeholder="">
+				</div>
+				<div class="block">
+				    <h6 for="sell-arrTime">Departure Time</h6>
+				    <input type="time" id="sell-arrTime" name="sell-arrTime" placeholder="">
+				    <input type="date" id="sell-arrDate" name="sell-arrDate" placeholder="">
+				</div>
+				<div class="block">
+				    <h6 for="sell-price">Selling Price</h6>
+				    <input type="number" id="sell-price" name="sell-price" placeholder="">
+				</div>	
+
+			</div>
+
+			 <input type="submit" value="Submit" id="sell-submit">
+		</div>
+	</div>
+
+
+ 
+</body>
+</html>

@@ -7,18 +7,19 @@
 	    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 	    crossorigin="anonymous">
 	</script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script>
-		$(function(){
-			$("head").load("./partials/header.html");
-			$("nav").load("./partials/nav.html");  
+		$( document ).ready(function() {
+    		$("head").load("./partials/header.html");
+			$("nav").load("./partials/nav.html"); 
 		});
 	</script>
 
 
 </head>
 <body>
-	<nav></nav>
 	<div class="container">
+		<nav></nav>
 		<div class="search"></div>
 		<div class="searchResult row">
 			<div class="searchFilter col-lg-4"></div>
