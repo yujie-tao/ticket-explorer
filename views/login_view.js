@@ -6,29 +6,41 @@ function createLogIn(){
 	 var logInBox= $('<div>',{
 	 	class: "logInBox"
 	 }).appendTo($('.log-in'))
+	  var block0 = $('<div>',{
+	 	class:"headerblock"
+	 }).appendTo(logInBox)
 	 $('<h2>',{
 	 	class: "head",
-	 	html: "welcome"
+	 	html: "Welcome"
+	 }).appendTo(block0)
+	 
+	 var block1 = $('<div>',{
+	 	class:"block"
 	 }).appendTo(logInBox)
+
 	 $('<h6>',{
-	 	html: "username"
-	 }).appendTo(logInBox)
+	 	html: "Username"
+	 }).appendTo(block1)
 	 $('<input>',{
 	 	id: "input-username",
 	 	type:"text"
+	 }).appendTo(block1)
+	 var block2 = $('<div>',{
+	 	class:"block"
 	 }).appendTo(logInBox)
 	 $('<h6>',{
-	 	html: "password"
-	 }).appendTo(logInBox)
+	 	html: "Password"
+	 }).appendTo(block2)
 	 $('<input>',{
 	 	id: "input-password",
 	 	type:"text"
-	 }).appendTo(logInBox)
+	 }).appendTo(block2)
 	 /*****Add onclick function****/
 	 $('<button>',{
 	 	id: "log-in",
 	 	type:"submit",
 	 	html: "Sign In",
+	 	class:"submit-btn",
 	 	onclick: ""
 	 }).appendTo(logInBox)
 }
