@@ -35,12 +35,16 @@ function createLogIn(){
 		id: "input-password",
 		type:"text"
 	}).appendTo(block2)
+	
+	var link = $('<a>',{
+		href:"./search.html"
+	}).appendTo(logInBox)
 	/*****Add onclick function****/
 	$('<button>',{
 		id: "log-in",
 		type:"submit",
 		html: "Sign In",
 		class:"submit-btn",
-		onclick: ""
-	}).appendTo(logInBox)
+		onclick: "sayHello()"
+	}).appendTo(link)
 }

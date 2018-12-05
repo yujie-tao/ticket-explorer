@@ -43,7 +43,7 @@ function createFilter(){
 
 
 	var block1 = $('<div>',{
-		class:"filter-block"
+		class:"filter-block row"
 	}).appendTo(sorter)
 
 	$('<input>',{
@@ -58,7 +58,7 @@ function createFilter(){
 	}).appendTo(block1)
 
 	var block2 = $('<div>',{
-		class:"filter-block"
+		class:"filter-block row"
 	}).appendTo(sorter)
 
 	$('<input>',{
@@ -72,7 +72,7 @@ function createFilter(){
 	}).appendTo(block2)
 
 	var block3 = $('<div>',{
-		class:"filter-block"
+		class:"filter-block row"
 	}).appendTo(sorter)
 
 	$('<input>',{
@@ -86,7 +86,7 @@ function createFilter(){
 	}).appendTo(block3)
 
 	var block4 = $('<div>',{
-		class:"filter-block"
+		class:"filter-block row"
 	}).appendTo(sorter)
 
 	$('<input>',{
@@ -104,50 +104,53 @@ function createFilter(){
 		class: "airlineFilter filter"
 	}).appendTo(filter)
 
-	var block5 = $('<div>',{
-		class:"filter-block"
-	}).appendTo(airlineFilter)
 
 	$('<h6>',{
 		html: "Airlines"
-	}).appendTo(block5)
+	}).appendTo(airlineFilter)
+
+	var block5 = $('<div>',{
+		class:"filter-block row"
+	}).appendTo(airlineFilter)
+
 	$('<input>',{
 		id: "american",
 		type: "checkbox",
 	}).appendTo(block5)
 
-	var block6 = $('<div>',{
-		class:"filter-block"
-	}).appendTo(airlineFilter)
 
 	$('<p>',{
 		html: "American Airlines"
-	}).appendTo(block6)
+	}).appendTo(block5)
+
+	var block6 = $('<div>',{
+		class:"filter-block row"
+	}).appendTo(airlineFilter)
 
 	$('<input>',{
 		id: "alaska",
 		type: "checkbox",
 	}).appendTo(block6)
 
-	var block7 = $('<div>',{
-		class:"filter-block"
-	}).appendTo(airlineFilter)
-
-
 	$('<p>',{
 		html: "Alaska Airlines"
-	}).appendTo(block7)
+	}).appendTo(block6)
+
+	var block7 = $('<div>',{
+		class:"filter-block row"
+	}).appendTo(airlineFilter)
 
 	$('<input>',{
 		id: "delta",
 		type: "checkbox",
 	}).appendTo(block7)
+
 	$('<p>',{
 		html: "Delta Airlines"
-	}).appendTo(airlineFilter)
+	}).appendTo(block7)
 
 	var block8 = $('<div>',{
-		class:"filter-block"
+		class:"filter-block row"
 	}).appendTo(airlineFilter)
 
 	$('<input>',{
@@ -159,7 +162,7 @@ function createFilter(){
 	}).appendTo(block8)
 
 	var block9 = $('<div>',{
-		class:"filter-block"
+		class:"filter-block row"
 	}).appendTo(airlineFilter)
 
 	$('<input>',{
@@ -171,7 +174,7 @@ function createFilter(){
 	}).appendTo(block9)
 
 	var block10 = $('<div>',{
-		class:"filter-block"
+		class:"filter-block row"
 	}).appendTo(airlineFilter)
 
 	$('<input>',{
@@ -200,7 +203,7 @@ function createGrid(logourl,airline,flightNum,
 	$(info).attr("data-target","#"+'booking'+id);
 
 	$('<img>',{
-		class: "logo",
+		class: "logo col-lg-3",
 		src: logourl
 	}).appendTo(info)
 
@@ -214,7 +217,7 @@ function createGrid(logourl,airline,flightNum,
 
 
 	var time= $('<th>',{
-		class: "time"
+		class: "time col-lg-3"
 	}).appendTo(ticketInfoRow1)
 
 	$('<h5>',{
@@ -222,16 +225,16 @@ function createGrid(logourl,airline,flightNum,
 	}).appendTo(time)
 
 	var dura= $('<th>',{
-		class: "duration"
+		class: "duration col-lg-3"
 	}).appendTo(ticketInfoRow1)
 
-	$('<h4>',{
+	$('<h5>',{
 		html: duration
 	}).appendTo(dura)
 
 
 	var pricing= $('<th>',{
-		class: "pricing"
+		class: "pricing col-lg-3"
 	}).appendTo(ticketInfoRow1)
 
 	$('<h4>',{
@@ -270,7 +273,7 @@ function createGrid(logourl,airline,flightNum,
 	}).appendTo(trip)
 
 	$('<i>',{
-		class: "fa fa-angle-down"
+		class: "fa fa-angle-down col-lg-1"
 	}).appendTo(info)
 
 

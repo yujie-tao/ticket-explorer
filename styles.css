@@ -24,6 +24,18 @@ h2{
 	margin-bottom: 50px;
 }
 
+h4{
+	font-family: 'Arimo', sans-serif;
+	color: var(--main-dark-purple);
+}
+
+h5{
+	font-family: 'Arimo', sans-serif;
+	color: var(--main-black);
+	font-weight: bold;
+	font-size: 18px;
+}
+
 h6{
 	font-family: 'Arimo', sans-serif;
 	color: var(--main-dark-grey);
@@ -31,6 +43,11 @@ h6{
 
 p{
 	font-family: 'Open Sans', sans-serif;
+	color: var(--main-black);
+}
+
+a:hover{
+	cursor: pointer;
 }
 
 input[type=text] {
@@ -38,6 +55,11 @@ input[type=text] {
 	border-bottom: 1px solid var(--main-dark-grey);
 	width: 100%;
 }
+
+input[type=checkbox] {
+	background-color: transparent;
+}
+
 
 input:focus{
 	outline: none;
@@ -48,9 +70,9 @@ button:focus{
 	outline: none;
 }
 
-/*button:hover{
+button:hover{
 	cursor: pointer;
-}*/
+}
 
 button{
 	display: block;
@@ -61,11 +83,16 @@ button{
 
 .navbar{
 	background-color: var(--main-dark-purple);
+	padding-bottom: 30px;
 }
 .navbar-light .navbar-nav .nav-link{
 	color: white;
 }
 
+.btn-link:hover{
+	color: inherit;
+	text-decoration: none;
+}
 
 /*******Regional*******/
 .block{
@@ -97,13 +124,66 @@ button{
 }
 
 /*******Search Page*******/
+.search{
+	margin-bottom: 50px;
+}
+
 .searchBox{
 	background-color: var(--main-dark-purple);
+	text-align: center;
 }
+
 .searchResult{
 	margin: auto;
 }
+
 .searchBar{
 	margin: auto;
+	border-radius: 30px 30px 30px 30px;
+	padding:1.1% 1% 1.1% 1%;
+	margin-top: 70px;
+	margin-bottom: 100px;
+}
+
+.fa-search{
+	color: var(--main-dark-purple);
+	font-size: 40px;
+	left: -100px;
+	position: relative;
+}
+
+.searchFilter{
+	background-color: var(--main-light-grey);
+	border-radius: 30px 30px 30px 30px;
+	padding: 5%;
+}
+
+.searchFilter h6{
+	color: var(--main-dark-purple);
+}
+
+.filter{
+	margin-top: 30px;
+}
+
+.filter-block{
+	margin: auto;
+}
+
+.filter-block p{
+	margin-left: 10px;
+}
+
+.result{
+	width: 100%;
+}
+
+.info{
+	width: 100%;
+	padding: 50px 10px 50px 10px;
+	border-radius: 30px 30px 30px 30px;
+	border: none;
+	box-shadow: 2px 4px 10px var(--main-dark-grey);
+	margin-left: 0px;
 }
 
