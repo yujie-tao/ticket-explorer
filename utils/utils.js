@@ -120,7 +120,7 @@ function _DefaultErrorFn(tag) {
 
 /**
  * ----------------------------------------------------------------
- * Utilities for handling flights
+ * Utilities and Examples for handling flights
  * ----------------------------------------------------------------
  */
 
@@ -130,9 +130,8 @@ function sortFlightsByDepartTime(){
 }
 
 function sortTicketsByPricePaid(){
-  getTickets(_SortByPricePaid)
+  getTickets(_SortByPricePaid);
 }
-
 
 
 // Functions ------------------------------------------------------
@@ -159,11 +158,27 @@ function _SortByPricePaid(response){
 }
 
 
+/**
+ * ----------------------------------------------------------------
+ * Core Backends
+ * ----------------------------------------------------------------
+ */
+
+// https://stackoverflow.com/questions/40281713/how-to-join-dictionary-elements
+// d: {key1: val1, key2:val2 ...} --> "?filter[key1]=val1&filter[key2]=val2 ..."
+function _DictToFilterString(d = null){
+  if (d === null){return "";}
+  return "?" + Object.keys(d).map(function(key){
+    return `filter[${key}]=${d[key]}`
+  }).join("&"); //outputs "foo=0&bar=1"
+}
+
+
 // Get ------------------------------------------------------------
 // https://stackoverflow.com/questions/5316697/jquery-return-data-after-ajax-call-success
-function getFlights(response_fn = _PrintResponse) {
+function getFlights(response_fn = _PrintResponse, filter_dict=null) {
   AjaxUtils.index(
-    "flights",
+    "flights" + _DictToFilterString(filter_dict),
     response_fn,
     function(response) {
       alert("getFlights Failed");
@@ -171,9 +186,9 @@ function getFlights(response_fn = _PrintResponse) {
   )
 }
 
-function getAirlines(response_fn = _PrintResponse) {
+function getAirlines(response_fn = _PrintResponse, filter_dict=null) {
   AjaxUtils.index(
-    "airlines",
+    "airlines" + _DictToFilterString(filter_dict),
     response_fn,
     function(response) {
       alert("getAirlines Failed");
@@ -182,9 +197,9 @@ function getAirlines(response_fn = _PrintResponse) {
 }
 
 
-function getAirports(response_fn = _PrintResponse) {
+function getAirports(response_fn = _PrintResponse, filter_dict=null) {
   AjaxUtils.index(
-    "airports",
+    "airports" + _DictToFilterString(filter_dict),
     response_fn,
     function(response) {
       alert("getAirports Failed");
@@ -193,9 +208,9 @@ function getAirports(response_fn = _PrintResponse) {
 }
 
 
-function getPlanes(response_fn = _PrintResponse) {
+function getPlanes(response_fn = _PrintResponse, filter_dict=null) {
   AjaxUtils.index(
-    "planes",
+    "planes" + _DictToFilterString(filter_dict),
     response_fn,
     function(response) {
       alert("getPlanes Failed");
@@ -204,9 +219,9 @@ function getPlanes(response_fn = _PrintResponse) {
 }
 
 
-function getSeats(response_fn = _PrintResponse) {
+function getSeats(response_fn = _PrintResponse, filter_dict=null) {
   AjaxUtils.index(
-    "seats",
+    "seats" + _DictToFilterString(filter_dict),
     response_fn,
     function(response) {
       alert("getSeats Failed");
@@ -215,9 +230,9 @@ function getSeats(response_fn = _PrintResponse) {
 }
 
 
-function getInstances(response_fn = _PrintResponse) {
+function getInstances(response_fn = _PrintResponse, filter_dict=null) {
   AjaxUtils.index(
-    "instances",
+    "instances" + _DictToFilterString(filter_dict),
     response_fn,
     function(response) {
       alert("getInstances Failed");
@@ -226,9 +241,9 @@ function getInstances(response_fn = _PrintResponse) {
 }
 
 
-function getItineraries(response_fn = _PrintResponse) {
+function getItineraries(response_fn = _PrintResponse, filter_dict=null) {
   AjaxUtils.index(
-    "itineraries",
+    "itineraries" + _DictToFilterString(filter_dict),
     response_fn,
     function(response) {
       alert("getItineraries Failed");
@@ -237,9 +252,9 @@ function getItineraries(response_fn = _PrintResponse) {
 }
 
 
-function getTickets(response_fn = _PrintResponse) {
+function getTickets(response_fn = _PrintResponse, filter_dict=null) {
   AjaxUtils.index(
-    "tickets",
+    "tickets" + _DictToFilterString(filter_dict),
     response_fn,
     function(response) {
       alert("getTickets Failed");
