@@ -125,11 +125,11 @@ function _DefaultErrorFn(tag) {
  */
 
 // API's: Just use them
-function sortFlightsByDepartTime(){
+function sortFlightsByDepartTime() {
   getFlights(_SortByDepartTime);
 }
 
-function sortTicketsByPricePaid(){
+function sortTicketsByPricePaid() {
   getTickets(_SortByPricePaid);
 }
 
@@ -149,7 +149,7 @@ function _SortByDepartTime(response) {
   console.log(response);
 }
 
-function _SortByPricePaid(response){
+function _SortByPricePaid(response) {
   response.sort(function(r1, r2) {
     return r1.price_paid - r2.price_paid;
   });
@@ -163,12 +163,26 @@ function _SortByPricePaid(response){
  * Core Backends
  * ----------------------------------------------------------------
  */
+function namedEntityExtractor(text) {
+  $.ajax({
+    type: "POST",
+    url: "http://0.0.0.0:6000/python/ner",
+    data: {
+      text: text
+    },
+    success: function(response) {
+      console.log(response);
+    }
+  });
+}
 
 // https://stackoverflow.com/questions/40281713/how-to-join-dictionary-elements
 // d: {key1: val1, key2:val2 ...} --> "?filter[key1]=val1&filter[key2]=val2 ..."
-function _DictToFilterString(d = null){
-  if (d === null){return "";}
-  return "?" + Object.keys(d).map(function(key){
+function _DictToFilterString(d = null) {
+  if (d === null) {
+    return "";
+  }
+  return "?" + Object.keys(d).map(function(key) {
     return `filter[${key}]=${d[key]}`
   }).join("&"); //outputs "foo=0&bar=1"
 }
@@ -176,7 +190,7 @@ function _DictToFilterString(d = null){
 
 // Get ------------------------------------------------------------
 // https://stackoverflow.com/questions/5316697/jquery-return-data-after-ajax-call-success
-function getFlights(response_fn = _PrintResponse, filter_dict=null) {
+function getFlights(response_fn = _PrintResponse, filter_dict = null) {
   AjaxUtils.index(
     "flights" + _DictToFilterString(filter_dict),
     response_fn,
@@ -186,7 +200,7 @@ function getFlights(response_fn = _PrintResponse, filter_dict=null) {
   )
 }
 
-function getAirlines(response_fn = _PrintResponse, filter_dict=null) {
+function getAirlines(response_fn = _PrintResponse, filter_dict = null) {
   AjaxUtils.index(
     "airlines" + _DictToFilterString(filter_dict),
     response_fn,
@@ -197,7 +211,7 @@ function getAirlines(response_fn = _PrintResponse, filter_dict=null) {
 }
 
 
-function getAirports(response_fn = _PrintResponse, filter_dict=null) {
+function getAirports(response_fn = _PrintResponse, filter_dict = null) {
   AjaxUtils.index(
     "airports" + _DictToFilterString(filter_dict),
     response_fn,
@@ -208,7 +222,7 @@ function getAirports(response_fn = _PrintResponse, filter_dict=null) {
 }
 
 
-function getPlanes(response_fn = _PrintResponse, filter_dict=null) {
+function getPlanes(response_fn = _PrintResponse, filter_dict = null) {
   AjaxUtils.index(
     "planes" + _DictToFilterString(filter_dict),
     response_fn,
@@ -219,7 +233,7 @@ function getPlanes(response_fn = _PrintResponse, filter_dict=null) {
 }
 
 
-function getSeats(response_fn = _PrintResponse, filter_dict=null) {
+function getSeats(response_fn = _PrintResponse, filter_dict = null) {
   AjaxUtils.index(
     "seats" + _DictToFilterString(filter_dict),
     response_fn,
@@ -230,7 +244,7 @@ function getSeats(response_fn = _PrintResponse, filter_dict=null) {
 }
 
 
-function getInstances(response_fn = _PrintResponse, filter_dict=null) {
+function getInstances(response_fn = _PrintResponse, filter_dict = null) {
   AjaxUtils.index(
     "instances" + _DictToFilterString(filter_dict),
     response_fn,
@@ -241,7 +255,7 @@ function getInstances(response_fn = _PrintResponse, filter_dict=null) {
 }
 
 
-function getItineraries(response_fn = _PrintResponse, filter_dict=null) {
+function getItineraries(response_fn = _PrintResponse, filter_dict = null) {
   AjaxUtils.index(
     "itineraries" + _DictToFilterString(filter_dict),
     response_fn,
@@ -252,7 +266,7 @@ function getItineraries(response_fn = _PrintResponse, filter_dict=null) {
 }
 
 
-function getTickets(response_fn = _PrintResponse, filter_dict=null) {
+function getTickets(response_fn = _PrintResponse, filter_dict = null) {
   AjaxUtils.index(
     "tickets" + _DictToFilterString(filter_dict),
     response_fn,
@@ -424,7 +438,7 @@ function createFakeItineraries() {
   createItinerary("Itinerary-5");
 }
 
-function createFakeTickets(){
+function createFakeTickets() {
   createTicket("Yujie-1", "Tao", "20", "Female", "119.99", 874854, 13157);
   createTicket("Yujie-2", "Tao", "20", "Female", "999.0", 874855, 13159);
   createTicket("Yujie-3", "Tao", "20", "Female", "23.7", 874856, 13161);
