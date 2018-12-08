@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Arimo|Open+Sans');
 
-/*******Global*******/
+/* ==========================================================================
+   Global styles: font, color and other global elements;
+   ========================================================================== */
 :root {
 	--main-white: #ffffff;
 	--main-black: #423E3A;
@@ -50,10 +52,11 @@ a:hover{
 	cursor: pointer;
 }
 
-input[type=text] {
+input[type=text],input[type=number],input[type=email] {
 	border: none;
 	border-bottom: 1px solid var(--main-dark-grey);
 	width: 100%;
+	background-color: transparent;
 }
 
 input[type=checkbox] {
@@ -81,6 +84,12 @@ button{
 	position: relative;
 }
 
+
+
+/* ==========================================================================
+   Regional styles: self-defined common classes across pages
+   ========================================================================== */
+
 .navbar{
 	background-color: var(--main-dark-purple);
 	padding-bottom: 30px;
@@ -94,7 +103,6 @@ button{
 	text-decoration: none;
 }
 
-/*******Regional*******/
 .block{
 	margin-bottom: 40px;
 }
@@ -109,7 +117,9 @@ button{
 	padding-bottom: 5%
 }
 
-/*******Home Page*******/
+/* ==========================================================================
+   Home page styles
+   ========================================================================== */
 .logInBox{
 	background-color: white;
 	padding: 15%;
@@ -123,7 +133,11 @@ button{
 	padding: 0px;
 }
 
-/*******Search Page*******/
+/* ==========================================================================
+   Search page styles: search bar, filter box, result box;
+   ========================================================================== */
+
+/****Search bar****/
 .search{
 	margin-bottom: 50px;
 }
@@ -145,6 +159,10 @@ button{
 	margin-bottom: 100px;
 }
 
+#ticketSearch{
+	background-color: white;
+}
+
 .fa-search{
 	color: var(--main-dark-purple);
 	font-size: 40px;
@@ -162,6 +180,7 @@ button{
 	color: var(--main-dark-purple);
 }
 
+/****Filter box****/
 .filter{
 	margin-top: 30px;
 }
@@ -174,6 +193,8 @@ button{
 	margin-left: 10px;
 }
 
+
+/****Result box****/
 .result{
 	width: 100%;
 }
@@ -186,4 +207,26 @@ button{
 	box-shadow: 2px 4px 10px var(--main-dark-grey);
 	margin-left: 0px;
 }
+
+.booking{
+	text-align: initial;
+	padding: 30px;
+	background-color: var(--main-black);
+	border-radius: 30px 30px 30px 30px;
+	width: 100%;
+    margin: auto;
+}
+
+.booking-block{
+	margin-top: 20px;
+}
+
+.book-submit{
+	border-radius: 9999em 9999em 9999em 9999em;
+	padding: 10px;
+	background-color: var(--main-white);
+	color: var(--main-dark-purple);
+}
+
+
 
