@@ -278,63 +278,89 @@ function createGrid(logourl,airline,flightNum,
 
 
 	var booking= $('<div>',{
-		class: "booking collapse",
+		class: "booking collapse row",
 		id:"booking"+id
 	}).appendTo(result)
 
 	$(booking).attr("data-parent","#info"+id);
 
+	var block1 = $('<div>',{
+		class:"booking-block col-lg-6"
+	}).appendTo(booking)
+
 	$('<h6>',{
 		html: "First name"
-	}).appendTo(booking)
+	}).appendTo(block1)
 	$('<input>',{
 		id: "book-fname-"+id,
 		type:"text"
+	}).appendTo(block1)
+
+	var block2 = $('<div>',{
+		class:"booking-block col-lg-6"
 	}).appendTo(booking)
 
 	$('<h6>',{
 		html: "Middle name"
-	}).appendTo(booking)
+	}).appendTo(block2)
 	$('<input>',{
 		id: "book-mname-"+id,
 		type:"text"
+	}).appendTo(block2)
+
+	var block3 = $('<div>',{
+		class:"booking-block col-lg-6"
 	}).appendTo(booking)
 
 	$('<h6>',{
 		html: "Last name"
-	}).appendTo(booking)
+	}).appendTo(block3)
 	$('<input>',{
 		id: "book-lname-"+id,
 		type:"text"
+	}).appendTo(block3)
+
+	var block4 = $('<div>',{
+		class:"booking-block col-lg-6"
 	}).appendTo(booking)
 
 	$('<h6>',{
 		html: "Gender"
-	}).appendTo(booking)
+	}).appendTo(block4)
 	$('<input>',{
 		id: "book-gender-"+id,
 		type:"text"
+	}).appendTo(block4)
+
+	var block5 = $('<div>',{
+		class:"booking-block col-lg-4"
 	}).appendTo(booking)
 
 	$('<h6>',{
 		html: "Age"
-	}).appendTo(booking)
+	}).appendTo(block5)
 	$('<input>',{
 		id: "book-age-"+id,
 		type:"number"
+	}).appendTo(block5)
+
+	var block6 = $('<div>',{
+		class:"booking-block col-lg-4"
 	}).appendTo(booking)
 
 	$('<h6>',{
 		html: "Email"
-	}).appendTo(booking)
+	}).appendTo(block6)
 	$('<input>',{
 		id: "book-email-"+id,
 		type:"email"
-	}).appendTo(booking)
+	}).appendTo(block6)
 
 	$('<input>',{
 		id: "book-submit-"+id,
-		type:"submit"
+		type:"submit",
+		value: "Book now",
+		class:"booking-block submit-btn book-submit col-lg-4"
 	}).appendTo(booking)
 
 }
