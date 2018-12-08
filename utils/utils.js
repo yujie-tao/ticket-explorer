@@ -166,7 +166,7 @@ function _SortByPricePaid(response) {
 function namedEntityExtractor(text) {
   $.ajax({
     type: "POST",
-    url: "http://0.0.0.0:6000/python/ner",
+    url: "http://bluetang.cs.unc.edu:6000/python/ner",
     data: {
       text: text
     },
