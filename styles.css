@@ -18,6 +18,7 @@ h1{
 	background-color: var(--main-dark-purple);
 	color: white;
 	text-transform: uppercase;
+	font-weight: bold;
 }
 
 h2{
@@ -26,9 +27,18 @@ h2{
 	margin-bottom: 50px;
 }
 
+h3{
+	font-family: 'Arimo', sans-serif;
+	color: var(--main-dark-purple);
+	font-size: 20px;
+	font-weight: bold;
+}
+
 h4{
 	font-family: 'Arimo', sans-serif;
 	color: var(--main-dark-purple);
+	font-size: 20px;
+	font-weight: bold;
 }
 
 h5{
@@ -228,5 +238,50 @@ button{
 	color: var(--main-dark-purple);
 }
 
+/* ==========================================================================
+   Search page styles: search bar, filter box, result box;
+   ========================================================================== */
 
+/****Sell box****/
+.sellBox{
+	height: 282px;
+	background-color: var(--main-dark-purple);
+}
 
+.sell{
+	margin: auto;
+}
+
+/****Sell Form****/
+.sellInfo h6{
+	color: var(--main-black);
+}
+
+.sellInfo input{
+	border-bottom: 1px solid var(--main-black);
+}
+
+.sellInfo{
+	text-align: initial;
+	padding: 100px;
+	border-radius: 30px 30px 30px 30px;
+	width: 100%;
+    box-shadow: 2px 4px 10px var(--main-dark-grey);
+    margin-bottom: 100px;
+    position: relative;
+    top: -150px;
+    background-color: white;
+}
+
+#sell-submit{
+	border-radius: 9999em 9999em 9999em 9999em;
+	padding: 10px;
+	background-color: var(--main-dark-purple);
+	color: var(--main-white);
+	margin: auto;
+	margin-top: 40px;
+}
+
+/* ==========================================================================
+   Media Query: Responsive design;
+   ========================================================================== */
