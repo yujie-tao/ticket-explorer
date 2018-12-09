@@ -125,12 +125,20 @@ function _DefaultErrorFn(tag) {
  */
 
 // API's: Just use them
-function sortFlightsByDepartTime() {
-  getFlights(_SortByDepartTime);
+function sortFlightsByDepartTimeAsc() {
+  getFlights(_SortByDepartTimeAsc);
 }
 
-function sortTicketsByPricePaid() {
-  getTickets(_SortByPricePaid);
+function sortTicketsByPricePaidAsc() {
+  getTickets(_SortByPricePaidAsc);
+}
+
+function sortFlightsByDepartTimeDesc() {
+    getFlights(_SortByDepartTimeDesc);
+}
+
+function sortTicketsByPricePaidDesc() {
+    getTickets(_SortByPricePaidDesc);
 }
 
 
@@ -139,7 +147,7 @@ function _PrintResponse(response) {
   console.log(response);
 }
 
-function _SortByDepartTime(response) {
+function _SortByDepartTimeAsc(response) {
   // https://stackoverflow.com/questions/10123953/sort-javascript-object-array-by-date/10124053
   response.sort(function(r1, r2) {
     // Turn your strings into dates, and then subtract them
@@ -149,12 +157,27 @@ function _SortByDepartTime(response) {
   console.log(response);
 }
 
-function _SortByPricePaid(response) {
+function _SortByPricePaidAsc(response) {
   response.sort(function(r1, r2) {
     return r1.price_paid - r2.price_paid;
   });
 
   console.log(response);
+}
+
+function _SortByDepartTimeDesc(response) {
+    response.sort(function(r1, r2) {
+        return new Date(r2.departs_at) - new Date(r1.departs_at);
+    });
+    console.log(response);
+}
+
+function _SortByPricePaidDesc(response) {
+    response.sort(function(r1, r2) {
+        return r2.price_paid - r1.price_paid;
+    });
+
+    console.log(response);
 }
 
 
