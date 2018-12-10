@@ -1,12 +1,6 @@
 $( document ).ready(function() {
 	createSearchBar();
 	createFilter();
-	// createGrid("logourl","airline","flightNum",
-	// 	"depTime","arrTime","duration",
-	// 	"depPort","arrPort","price","id");
-	// createGrid("logourl","airline","flightNum",
-	// 	"depTime","arrTime","duration",
-	// 	"depPort","arrPort","price","id2");
 });
 
 
@@ -202,13 +196,17 @@ function createGrid(logourl,airline,flightNum,
 	$(info).attr("data-toggle","collapse");
 	$(info).attr("data-target","#"+'booking'+id);
 
-	$('<img>',{
-		class: "logo col-lg-3",
-		src: logourl
+	// $('<img>',{
+	// 	class: "logo col-lg-3",
+	// 	src: logourl
+	// }).appendTo(info)
+
+	$('<i>',{
+		class: "logo col-lg-3 fas fa-plane",
 	}).appendTo(info)
 
 	var table= $('<table>',{
-		class: "tickettableo"
+		class: "ticketTable col-lg-6"
 	}).appendTo(info)
 
 	var ticketInfoRow1= $('<tr>',{

@@ -209,6 +209,11 @@ button{
 	width: 100%;
 }
 
+.fa-plane{
+	font-size: 50px;
+	color: var(--main-light-purple);
+}
+
 .info{
 	width: 100%;
 	padding: 50px 10px 50px 10px;
@@ -229,6 +234,10 @@ button{
 
 .booking-block{
 	margin-top: 20px;
+}
+
+.booking-block input{
+	color: var(--main-white);
 }
 
 .book-submit{
