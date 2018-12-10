@@ -195,6 +195,7 @@ function namedEntityExtractor(text) {
     },
     success: function(response) {
       console.log(response);
+      passInSearch(response);
     }
   });
 }
