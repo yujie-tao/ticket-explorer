@@ -1,12 +1,12 @@
 $( document ).ready(function() {
 	createSearchBar();
 	createFilter();
-	createGrid("logourl","airline","flightNum",
-		"depTime","arrTime","duration",
-		"depPort","arrPort","price","id");
-	createGrid("logourl","airline","flightNum",
-		"depTime","arrTime","duration",
-		"depPort","arrPort","price","id2");
+	// createGrid("logourl","airline","flightNum",
+	// 	"depTime","arrTime","duration",
+	// 	"depPort","arrPort","price","id");
+	// createGrid("logourl","airline","flightNum",
+	// 	"depTime","arrTime","duration",
+	// 	"depPort","arrPort","price","id2");
 });
 
 
@@ -114,7 +114,7 @@ function createFilter(){
 	}).appendTo(airlineFilter)
 
 	$('<input>',{
-		id: "american",
+		id: "American Airlines",
 		type: "checkbox",
 	}).appendTo(block5)
 
@@ -128,7 +128,7 @@ function createFilter(){
 	}).appendTo(airlineFilter)
 
 	$('<input>',{
-		id: "alaska",
+		id: "Alaska Airlines",
 		type: "checkbox",
 	}).appendTo(block6)
 
@@ -141,7 +141,7 @@ function createFilter(){
 	}).appendTo(airlineFilter)
 
 	$('<input>',{
-		id: "delta",
+		id: "Delta Air Lines",
 		type: "checkbox",
 	}).appendTo(block7)
 
@@ -154,11 +154,11 @@ function createFilter(){
 	}).appendTo(airlineFilter)
 
 	$('<input>',{
-		id: "jetblue",
+		id: "JetBlue Airways",
 		type: "checkbox",
 	}).appendTo(block8)
 	$('<p>',{
-		html: "Jetblue Airlines"
+		html: "JetBlue Airways"
 	}).appendTo(block8)
 
 	var block9 = $('<div>',{
@@ -166,7 +166,7 @@ function createFilter(){
 	}).appendTo(airlineFilter)
 
 	$('<input>',{
-		id: "united",
+		id: "United Airlines",
 		type: "checkbox",
 	}).appendTo(block9)
 	$('<p>',{
