@@ -20,6 +20,8 @@ function createSearchBar(){
 		placeholder: "I want a flight from RDU to SFO on Dec.20…"
 	}).appendTo(searchBox)
 	$('<i>',{
+		id: "ticketSearchButton",
+		type: "button",
 		class: "fas fa-search"
 	}).appendTo(searchBox)
 }
