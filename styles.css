@@ -28,10 +28,9 @@ h2{
 }
 
 h3{
-	font-family: 'Arimo', sans-serif;
-	color: var(--main-dark-purple);
-	font-size: 20px;
-	font-weight: bold;
+	ffont-family: 'Open Sans', sans-serif;
+	color: var(--main-dark-grey);
+	font-size: 100px;
 }
 
 h4{
@@ -178,6 +177,7 @@ button{
 	font-size: 40px;
 	left: -100px;
 	position: relative;
+	top: 10px;
 }
 
 .searchFilter{
@@ -205,6 +205,14 @@ button{
 
 
 /****Result box****/
+.noflight{
+	text-align: center;
+/*	padding-top: 60px;*/
+}
+
+p.noflight{
+	color: var(--main-dark-grey);
+}
 .result{
 	width: 100%;
 }

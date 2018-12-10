@@ -4,6 +4,7 @@ var depDate = '2018-11-29';
 // createFakeTickets();
 
 searchFlight(depPort, arrPort, depDate);
+// setTimeout(function(){flightNotFound();; }, 3000);
 
 
 /**

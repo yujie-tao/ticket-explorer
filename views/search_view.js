@@ -16,13 +16,13 @@ function createSearchBar(){
 	$('<input>',{
 		id: "ticketSearch",
 		type:"text",
-		class:"col-lg-8 searchBar",
+		class:"searchBar col-lg-8 col-10",
 		placeholder: "I want a flight from RDU to SFO on Dec.20…"
 	}).appendTo(searchBox)
 	$('<i>',{
 		id: "ticketSearchButton",
-		type: "button",
-		class: "fas fa-search"
+		// type: "button",
+		class: "fas fa-search col-lg-1 col-1"
 	}).appendTo(searchBox)
 }
 
@@ -204,11 +204,11 @@ function createGrid(logourl,airline,flightNum,
 	// }).appendTo(info)
 
 	$('<i>',{
-		class: "logo col-lg-3 fas fa-plane",
+		class: "logo col-lg-3 col-3 fas fa-plane",
 	}).appendTo(info)
 
 	var table= $('<table>',{
-		class: "ticketTable col-lg-6"
+		class: "ticketTable col-lg-6 col-6"
 	}).appendTo(info)
 
 	var ticketInfoRow1= $('<tr>',{
@@ -269,11 +269,11 @@ function createGrid(logourl,airline,flightNum,
 	}).appendTo(ticketInfoRow2)
 
 	$('<p>',{
-		html:'singleTrip'
+		html:'Single Trip'
 	}).appendTo(trip)
 
 	$('<i>',{
-		class: "fa fa-angle-down col-lg-1"
+		class: "fa fa-angle-down col-lg-1 col-1"
 	}).appendTo(info)
 
 
@@ -363,5 +363,19 @@ function createGrid(logourl,airline,flightNum,
 		class:"booking-block submit-btn book-submit col-lg-4"
 	}).appendTo(booking)
 
+}
+
+function flightNotFound(){
+	$('.searchFilter').remove();
+	$('.resultBox').empty();
+
+	$('<h3>',{
+		html: "( ¯•ω•¯ )",
+		class: "noflight col-lg-12"
+	}).appendTo('.searchResult')
+	$('<p>',{
+		html: "No flights found!",
+		class: "noflight col-lg-12"
+	}).appendTo('.searchResult')
 }
 
