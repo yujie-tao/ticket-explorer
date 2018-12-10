@@ -1,50 +1,39 @@
 $( document ).ready(function() {
-    //listen to search bar, create grid
-    $('#ticSearchBut').on('click',()=>{
-        //parse stuff
-
-        //retrieve info
-
-        //demonstrate 10 items on page
-        // for(i = 0; i< 10; i++){
-        //     createGrid("logourl","airline","flightNum",
-        //     	"depTime","arrTime","duration",
-        //     	"depPort","arrPort","price","id");
-        // }
-    });
 
 
     //listen to radio event
     $('.filter').on('click', 'input:radio', ()=> {
-        updateRadioFilters();
+        updateFilters();
     });
 
-    //listen to checkbox event
+    // //listen to checkbox event
     $('.filter').on('click', 'input:checkbox', ()=> {
-        updateAirlineFilters();
+        updateFilters();
     });
 
 });
 
 
-function updateRadioFilters() {
-    var sList = "";
+function updateFilters() {
+    clearResultBox();
+    var r = '';
+    var cList = [];
     $('input[type=radio]').each(function () {
-        var sThisVal = (this.checked ? "1" : "0");
-        sList += (sList == "" ? sThisVal : "," + sThisVal);
+        if(this.checked) {
+            var rThisVal = $(this).attr('id');
+            r += rThisVal;
+        }
     });
-    console.log(sList);
-};
-
-
-function updateAirlineFilters() {
-    var sList = "";
     $('input[type=checkbox]').each(function () {
-        var sThisVal = (this.checked ? "1" : "0");
-        sList += (sList == "" ? sThisVal : "," + sThisVal);
+        if(this.checked) {
+            var sThisVal = $(this).attr('id');
+            cList += sThisVal;
+        }
     });
-    console.log(sList);
+    console.log(r+ ' ' + cList);
+    fillResultBox(r, cList);
 };
+
 
 function sortByID(){
     getAirlines(function(response) {
@@ -54,3 +43,25 @@ function sortByID(){
         console.log(response);
     });
 };
+
+
+function clearResultBox(){
+    $('#resultBox').empty();
+}
+
+
+function fillResultBox(r, cList){
+    if(r){
+        if (r = 'priceAsc'){
+            getAirlines(sortTicketsByPricePaidAsc(),{airline_name:cList});
+        } else if (r = 'priceDesc'){
+            getAirlines(sortTicketsByPricePaidDesc(),{airline_name:cList});
+        } else if (r = 'timeAsc'){
+            getAirlines(sortFlightsByDepartTimeAsc(),{airline_name:cList});
+        } else if (r = 'timeDesc'){
+            getAirlines(sortFlightsByDepartTimeDesc(),{airline_name:cList});
+        }
+    } else {
+        getAirlines(_PrintResponse(),{airline_name:cList});
+    }
+}
