@@ -4,7 +4,8 @@ function passInSearch(response){
     var res = response;
     var key = Object.keys(res)[0];
     inputList = res[key];
-    console.log(inputList[0]);
+    inputList[2] = inputList[2].split("T")[0];
+    console.log(inputList);
 }
 
 $( document ).ready(function() {
@@ -17,8 +18,8 @@ $( document ).ready(function() {
         clearResultBox();
         //console.log(ticInput);
         namedEntityExtractor(ticInput);
-        console.log("Here is the info put into the searchFlight(): "+ inputList);
-        searchFlight(inputList);
+        console.log("Here is the info put into the searchFlight(): "+ inputList[0] + inputList[1]+ inputList[2]);
+        searchFlight(inputList[0], inputList[1], inputList[2]);
     });
 
     //listen to radio event
@@ -51,38 +52,78 @@ function updateRadioFilters() {
     });
 };
 
+
 function updateCheckboxFilters() {
     var cList = [];
     $('input[type=checkbox]').each(function () {
         if(this.checked) {
-            var sThisVal = $(this).attr('id');
-            cList += sThisVal;
+            var cThisVal = $(this).attr('id');
+            cList.push(cThisVal);
         }
     });
+    console.log(cList);
+    filterByAirline(cList);
 }
 
 
 function sortByPriceAsc() {
-    $('#result btn btn-link').sort(function(r1, r2) {
-        return r1.price_paid - r2.price_paid;
-    });
+    $(".result").sort(function(a, b) {
+        a = $(".pricing", a).text().slice(1, ".pricing".length);
+        b = $(".pricing", b).text().slice(1, ".pricing".length);
+        return a - b;
+    }).appendTo(".resultBox");
 }
+
 
 function sortByPriceDesc() {
-    $('#result btn btn-link').sort(function(r1, r2) {
-        return r2.childNodes - r1.pricing;
-    });
+    $(".result").sort(function(a, b) {
+        a = $(".pricing", a).text().slice(1, ".pricing".length);
+        b = $(".pricing", b).text().slice(1, ".pricing".length);
+        return b - a;
+    }).appendTo(".resultBox");
 }
+
 
 function sortByTimeAsc() {
-
+    $(".result").sort(function(a, b) {
+        a = $(".time", a).text().split("-")[0];
+        b = $(".time", b).text().split("-")[0];
+        return a - b;
+    }).appendTo(".resultBox");
 }
+
 
 function sortByTimeDesc() {
-
+    $(".result").sort(function(a, b) {
+        a = $(".time", a).text().split("-")[0];
+        b = $(".time", b).text().split("-")[0];
+        return b - a;
+    }).appendTo(".resultBox");
 }
 
 
+function filterByAirline(cList){
+
+    //if no filter show all options
+    if(cList.length == 0){
+        $(".result").show();
+    } else {
+        $(".result").each(function () {
+            var airline = $(this).find(".flight").text();
+            var flag = false;
+            for (var i = 0; i< cList.length; i++){
+                //checking each flight to match airline filter
+                if (cList[i] == airline) {
+                    flag = true;
+                    $(this).show();
+                    console.log("voila");
+                    return ;
+                }
+            }
+            $(this).hide();
+        });
+    }
+}
 
 
 function clearResultBox(){
