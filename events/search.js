@@ -1,6 +1,7 @@
 var depPort = 'BOS';
 var arrPort = 'JFK';
 var depDate = '2018-11-29';
+// createFakeTickets();
 
 searchFlight(depPort, arrPort, depDate);
 
@@ -42,8 +43,9 @@ function _getFlight(depPort, arrPort, depDate, depId, arrId){
 		}
 		for(let i = 0; i < response.length; i++){
 			let fliId = response[i].id;
-			let depAt = response[i].departs_at;
-			let arrAt = response[i].arrives_at;
+			let depAt = response[i].departs_at.split('T')[1].split('.')[0].split(':').splice(0,2).join(':');
+			console.log(depAt);
+			let arrAt =  response[i].arrives_at.split('T')[1].split('.')[0].split(':').splice(0,2).join(':');
 			let airId = response[i].airline_id;
 			let flinum = response[i].number;
 			console.log(airId);
@@ -59,7 +61,7 @@ function _getAirline(depPort, arrPort, depDate, depAt, arrAt, flinum, airId, fli
 			/******handle not found in front end*****/
 			return;
 		}
-		console.log(response);
+		// console.log(response);
 		let airName = response.name;
 		let airLogo = response.logo_url;
 		_getInstance(depPort, arrPort, depDate, depAt, arrAt, flinum, airName, airLogo, fliId);
@@ -87,11 +89,14 @@ function _getTicket(depPort, arrPort, depDate, depAt, arrAt, flinum, airName, ai
 			console.log(response);
 			return;
 		}
+		console.log(response);
 		for(let i = 0; i < response.length; i++){
-			var price = response[i].price;
-			createGrid(airLogo,airName,flinum,
+			if(response[i].is_purchased == false){
+				var price = response[i].price_paid;
+				createGrid(airLogo,airName,flinum,
 						depAt, arrAt,"duration",
-						depPort,arrPort,depDate,i);
+						depPort,arrPort,price,i);
+			}
 		}
 	},{instance_id:insId})
 }

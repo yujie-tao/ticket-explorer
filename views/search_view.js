@@ -238,7 +238,7 @@ function createGrid(logourl,airline,flightNum,
 	}).appendTo(ticketInfoRow1)
 
 	$('<h4>',{
-		html: price
+		html: '$'+price
 	}).appendTo(pricing)
 
 	var ticketInfoRow2= $('<tr>',{
@@ -260,7 +260,7 @@ function createGrid(logourl,airline,flightNum,
 	}).appendTo(ticketInfoRow2)
 
 	$('<p>',{
-		html: depPort+'-'+'arrPort'
+		html: depPort+'-'+arrPort
 	}).appendTo(airports)
 
 
