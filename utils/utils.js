@@ -205,6 +205,10 @@ function _DictToFilterString(d = null) {
   if (d === null) {
     return "";
   }
+  /*****Not using filter for id*****/
+  if (Object.keys(d) == 'id'){
+    return '/'+d.id;
+  }
   return "?" + Object.keys(d).map(function(key) {
     return `filter[${key}]=${d[key]}`
   }).join("&"); //outputs "foo=0&bar=1"

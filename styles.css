@@ -224,7 +224,7 @@ button{
 	background-color: var(--main-black);
 	border-radius: 30px 30px 30px 30px;
 	width: 100%;
-    margin: auto;
+	margin: auto;
 }
 
 .booking-block{
@@ -266,11 +266,11 @@ button{
 	padding: 100px;
 	border-radius: 30px 30px 30px 30px;
 	width: 100%;
-    box-shadow: 2px 4px 10px var(--main-dark-grey);
-    margin-bottom: 100px;
-    position: relative;
-    top: -150px;
-    background-color: white;
+	box-shadow: 2px 4px 10px var(--main-dark-grey);
+	margin-bottom: 100px;
+	position: relative;
+	top: -150px;
+	background-color: white;
 }
 
 #sell-submit{
