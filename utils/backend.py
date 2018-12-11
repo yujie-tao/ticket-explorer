@@ -16,7 +16,13 @@ def login():
 
     entity_ids = []
     entity_types = []
-    for entity in response.entities():
+
+    # Make sure the order is correct
+    sorted_entities = sorted(
+        response.entities(),
+        key=lambda entity: entity.starting_position)
+
+    for entity in sorted_entities:
         print(entity.id, entity.freebase_types)
         entity_ids.append(entity.id)
         entity_types.append(entity.freebase_types)
