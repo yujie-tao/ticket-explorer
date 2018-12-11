@@ -305,6 +305,18 @@ function getTickets(response_fn = _PrintResponse, filter_dict = null) {
 }
 
 
+//Read ------------------------------------------------------------
+function getTicket(response_fn = _PrintResponse, ticId) {
+    AjaxUtils.read(
+        "tickets", ticId, '',
+        response_fn,
+        function(response) {
+            alert("getTicket Failed");
+        }
+    )
+}
+
+
 // Create ---------------------------------------------------------
 function createFlight(departs_at, arrives_at, number, departure_id, arrival_id) {
   AjaxUtils.create(
@@ -374,12 +386,12 @@ function createInstance(flight_id, date) {
 }
 
 
-function createItinerary(confirmation_code) {
+function createItinerary(confirmation_code, email) {
   AjaxUtils.create(
     "itineraries", {
       itinerary: {
         confirmation_code: confirmation_code,
-        email: "kmp@cs.unc.edu"
+        email: email
       }
     });
 }
@@ -403,6 +415,7 @@ function createTicket(first_name, middle_name, last_name, age, gender, price_pai
     });
 }
 
+
 function updateTicket(first_name, middle_name, last_name, age, gender, ticket_id) {
     AjaxUtils.update(
         "tickets", ticket_id,
@@ -414,6 +427,18 @@ function updateTicket(first_name, middle_name, last_name, age, gender, ticket_id
                 age: age,
                 gender: gender,
                 is_purchased: true
+            }
+        });
+}
+
+
+function updateItinerary(itrId, email, comCode) {
+    AjaxUtils.update(
+        "itineraries", itrId,
+        {
+            itinerary: {
+                email: email,
+                confirmation_code: comCode
             }
         });
 }

@@ -164,15 +164,29 @@ function updateBookedTicket(temp) {
     var age   = $(temp).find('#book-age-' + ticId).val();
     var email = $(temp).find('#book-email-' + ticId).val();
 
-
-    //createTicket(fName, mName, lName, age, gender, price, ticId);
     if (fName.length == 0 || lName.length == 0 || gender.length == 0 || age.length == 0 || email.length == 0) {
-        alert("insufficient information!");
+        alert("Insufficient Information!");
+        return ;
+    } else if (email.indexOf('@') == -1) {
+        alert("Invalid Email Address");
         return ;
     }
 
-    updateTicket(fName, mName, lName, age, gender, ticId);
-    $(temp).parent().remove();
+
+    //retrieve the itinerary id and update both itinerary and ticket tables
+    getTicket(function(response){
+        var itrId = response.itinerary_id;
+        var comCode = makeid();
+
+        updateTicket(fName, mName, lName, age, gender, ticId);
+        updateItinerary(itrId, email, comCode);
+
+        alert('Purchase successful!');
+        $(temp).parent().fadeOut(300, function() { $(temp).parent().remove(); });
+
+        }, { ticket_id : ticId } )
+
+
 }
 
 
@@ -186,7 +200,7 @@ function createSoldTicket(temp){
 
     var airline = $(temp).find('#sell-aname').val();
     var fliNum = $(temp).find('#sell-fnum').val();
-    var ticId = $(temp).find('#sell-comCode').val();
+    var comCode = $(temp).find('#sell-comCode').val();
     var depAt = $(temp).find('#sell-dePort').val();
     var arrAt = $(temp).find('#sell-arrPort').val();
     var sellPrice = $(temp).find('#sell-price').val();
@@ -200,6 +214,18 @@ function createSoldTicket(temp){
         return ;
     }
 
+    createItinerary(comCode, email);
 
 
+}
+
+//https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+//for randomly generating confirmation code
+function makeid() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < 7; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    return text;
 }
