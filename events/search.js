@@ -4,7 +4,6 @@ var depDate = '2018-11-29';
 // createFakeTickets();
 
 searchFlight(depPort, arrPort, depDate);
-// setTimeout(function(){flightNotFound();; }, 3000);
 
 
 /**
@@ -17,7 +16,7 @@ searchFlight(depPort, arrPort, depDate);
 function searchFlight(depPort, arrPort, depDate){
 	getAirports(function(response){
 		if(response.length == 0){
-			/******handle not found in front end*****/
+			flightNotFound();
 			return;
 		}
 		let depId = response[0].id;
@@ -28,7 +27,7 @@ function searchFlight(depPort, arrPort, depDate){
 function _getArrPort(depPort, arrPort, depDate, depId){
 	getAirports(function(response){
 		if(response.length == 0){
-			/******handle not found in front end*****/
+			flightNotFound();
 			return;
 		}
 		let arrId = response[0].id;
@@ -39,30 +38,27 @@ function _getArrPort(depPort, arrPort, depDate, depId){
 function _getFlight(depPort, arrPort, depDate, depId, arrId){
 	getFlights(function(response){
 		if(response.length == 0){
-			/******handle not found in front end*****/
+			flightNotFound();
 			return;
 		}
 		for(let i = 0; i < response.length; i++){
 			let fliId = response[i].id;
 			let depAt = response[i].departs_at.split('T')[1].split('.')[0].split(':').splice(0,2).join(':');
-			console.log(depAt);
 			let arrAt =  response[i].arrives_at.split('T')[1].split('.')[0].split(':').splice(0,2).join(':');
 			let airId = response[i].airline_id;
 			let flinum = response[i].number;
-			console.log(airId);
+			console.log(fliId);
 			_getAirline(depPort, arrPort, depDate, depAt, arrAt, flinum, airId, fliId);
 		}
-		// console.log(response);
+		console.log(response);
 	}, {departure_id:depId, arrival_id:arrId})
 }
 
 function _getAirline(depPort, arrPort, depDate, depAt, arrAt, flinum, airId, fliId){
 	getAirlines(function(response){
 		if(response.length == 0){
-			/******handle not found in front end*****/
 			return;
 		}
-		// console.log(response);
 		let airName = response.name;
 		let airLogo = response.logo_url;
 		_getInstance(depPort, arrPort, depDate, depAt, arrAt, flinum, airName, airLogo, fliId);
@@ -70,14 +66,14 @@ function _getAirline(depPort, arrPort, depDate, depAt, arrAt, flinum, airId, fli
 }
 
 function _getInstance(depPort, arrPort, depDate, depAt, arrAt, flinum, airName, airLogo,fliId){
+	console.log(fliId);
 	getInstances(function(response){
 		if(response.length == 0){
-			/******handle not found in front end*****/
 			return;
 		}
 		for(let i = 0; i < response.length; i++){
 			let insId = response[i].id;
-			console.log(insId);
+			console.log(response);
 			_getTicket(depPort, arrPort, depDate, depAt, arrAt, flinum, airName, airLogo,insId);
 		}
 	},{flight_id:fliId, date:depDate})
@@ -86,18 +82,20 @@ function _getInstance(depPort, arrPort, depDate, depAt, arrAt, flinum, airName, 
 function _getTicket(depPort, arrPort, depDate, depAt, arrAt, flinum, airName, airLogo,insId){
 	getTickets(function(response){
 		if(response.length == 0){
-			/******handle not found in front end*****/
-			console.log(response);
 			return;
 		}
-		console.log(response);
 		for(let i = 0; i < response.length; i++){
 			if(response[i].is_purchased == false){
 				var price = response[i].price_paid;
+				var tid = response[i].id;
 				createGrid(airLogo,airName,flinum,
 						depAt, arrAt,"duration",
-						depPort,arrPort,price,i);
+						depPort,arrPort,price,tid);
 			}
+		}
+
+		if(!$('.result')){
+			flightNotFound();
 		}
 	},{instance_id:insId})
 }

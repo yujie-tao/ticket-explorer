@@ -188,7 +188,7 @@ function createGrid(logourl,airline,flightNum,
 	id){
 	var result= $('<div>',{
 		class: "result btn btn-link",
-		id: "info"+id
+		id: "info-"+id
 	}).appendTo($('.resultBox'))
 
 	var info= $('<button>',{
@@ -196,7 +196,7 @@ function createGrid(logourl,airline,flightNum,
 	}).appendTo(result)
 
 	$(info).attr("data-toggle","collapse");
-	$(info).attr("data-target","#"+'booking'+id);
+	$(info).attr("data-target","#"+'booking-'+id);
 
 	// $('<img>',{
 	// 	class: "logo col-lg-3",
@@ -279,10 +279,10 @@ function createGrid(logourl,airline,flightNum,
 
 	var booking= $('<div>',{
 		class: "booking collapse row",
-		id:"booking"+id
+		id:"booking-"+id
 	}).appendTo(result)
 
-	$(booking).attr("data-parent","#info"+id);
+	$(booking).attr("data-parent","#info-"+id);
 
 	var block1 = $('<div>',{
 		class:"booking-block col-lg-6"
