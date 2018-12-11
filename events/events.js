@@ -49,7 +49,7 @@ $( document ).ready(function() {
 
     //listen to selling requests
     $(document).on( "click", "#sell-submit",function() {
-        updateSoldTicket($(this).parent().parent());
+        createSoldTicket($(this).parent().parent());
     });
 
 
@@ -171,12 +171,12 @@ function updateBookedTicket(temp) {
         return ;
     }
 
-
-
+    updateTicket(fName, mName, lName, age, gender, ticId);
+    $(temp).parent().remove();
 }
 
 
-function updateSoldTicket(temp){
+function createSoldTicket(temp){
     var fName = $(temp).find('#sell-fname').val();
     var mName = $(temp).find('#sell-mname').val();
     var lName = $(temp).find('#sell-lname').val();

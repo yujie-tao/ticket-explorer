@@ -49,7 +49,7 @@ class AjaxUtils {
 
     $.ajax({
       type: "GET",
-      url: `${API_ROOT}${resouce}/:${id}`,
+      url: `${API_ROOT}${resouce}/${id}`,
       xhrFields: {
         withCredentials: true
       },
@@ -66,7 +66,7 @@ class AjaxUtils {
 
     $.ajax({
       type: "PUT",
-      url: `${API_ROOT}${resouce}/:${id}`,
+      url: `${API_ROOT}${resouce}/${id}`,
       xhrFields: {
         withCredentials: true
       },
@@ -82,7 +82,7 @@ class AjaxUtils {
     error_fn = _DefaultErrorFn("delete")) {
 
     if (id === null) {
-      let url = `${API_ROOT}${resouce}/:${id}`;
+      let url = `${API_ROOT}${resouce}/${id}`;
     } else {
       let url = API_ROOT + resouce;
     }
