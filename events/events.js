@@ -7,7 +7,7 @@ function passInSearch(response){
     var key = Object.keys(res)[0];
     inputList = res[key];
     inputList[2] = inputList[2].split("T")[0];
-    //console.log(inputList);
+    console.log(inputList);
 }
 
 
@@ -25,8 +25,7 @@ $( document ).ready(function() {
 
         clearResultBox();
         namedEntityExtractor(ticInput);
-
-        searchFlight(inputList[0], inputList[1], inputList[2]);
+        setTimeout( function(){searchFlight(inputList[0], inputList[1], inputList[2])}, 1000);
     });
 
 
@@ -157,17 +156,16 @@ function clearResultBox(){
 
 
 function updateBookedTicket(temp) {
-    var insId = $(temp).attr('id').split('-')[1];
-    var fName = $(temp).find('#book-fname-' + insId).val();
-    var mName = $(temp).find('#book-mname-' + insId).val();
-    var lName = $(temp).find('#book-lname-' + insId).val();
-    var gender= $(temp).find('#book-gender-' + insId).val();
-    var age   = $(temp).find('#book-age-' + insId).val();
-    var email = $(temp).find('#book-email-' + insId).val();
-    var price = $(temp).parent().find('.pricing')[0].innerText;
+    var ticId = $(temp).attr('id').split('-')[1];
+    var fName = $(temp).find('#book-fname-' + ticId).val();
+    var mName = $(temp).find('#book-mname-' + ticId).val();
+    var lName = $(temp).find('#book-lname-' + ticId).val();
+    var gender= $(temp).find('#book-gender-' + ticId).val();
+    var age   = $(temp).find('#book-age-' + ticId).val();
+    var email = $(temp).find('#book-email-' + ticId).val();
 
 
-    //createTicket(fName, mName, lName, age, gender, price, insId);
+    //createTicket(fName, mName, lName, age, gender, price, ticId);
     if (fName.length == 0 || lName.length == 0 || gender.length == 0 || age.length == 0 || email.length == 0) {
         alert("insufficient information!");
         return ;
@@ -175,12 +173,6 @@ function updateBookedTicket(temp) {
 
 
 
-    sendConfirmationEmail(email, insId);
-}
-
-
-function sendConfirmationEmail(email, insId) {
-    alert("An email with the confirmation code: " + insId + " has been sent to: " + email + " !");
 }
 
 
@@ -194,7 +186,7 @@ function updateSoldTicket(temp){
 
     var airline = $(temp).find('#sell-aname').val();
     var fliNum = $(temp).find('#sell-fnum').val();
-    var insId = $(temp).find('#sell-comCode').val();
+    var ticId = $(temp).find('#sell-comCode').val();
     var depAt = $(temp).find('#sell-dePort').val();
     var arrAt = $(temp).find('#sell-arrPort').val();
     var sellPrice = $(temp).find('#sell-price').val();
@@ -203,11 +195,11 @@ function updateSoldTicket(temp){
     var arrTime = $(temp).find('#sell-arrTime').val();
     var arrDate = $(temp).find('#sell-arrDate').val();
 
-    if (insId.length == 0) {
+    if (ticId.length == 0) {
         alert("insufficient information!");
         return ;
     }
 
-    
+
 
 }

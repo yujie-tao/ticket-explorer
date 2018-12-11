@@ -394,13 +394,28 @@ function createTicket(first_name, middle_name, last_name, age, gender, price_pai
         last_name: last_name,
         age: age,
         gender: gender,
-        is_purchased: true,
+        is_purchased: false,
         price_paid: price_paid,
         instance_id: instance_id,
         // iternary_id: iternary_id
         //seat_id: seat_id
       }
     });
+}
+
+function updateTicket(first_name, middle_name, last_name, age, gender, ticket_id) {
+    AjaxUtils.update(
+        "tickets", ticket_id,
+        {
+            ticket: {
+                first_name: first_name,
+                middle_name: middle_name,
+                last_name: last_name,
+                age: age,
+                gender: gender,
+                is_purchased: true
+            }
+        });
 }
 
 
