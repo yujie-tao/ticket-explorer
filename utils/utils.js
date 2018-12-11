@@ -385,11 +385,12 @@ function createItinerary(confirmation_code) {
 }
 
 
-function createTicket(first_name, last_name, age, gender, price_paid, instance_id, iternary_id, seat_id) {
+function createTicket(first_name, middle_name, last_name, age, gender, price_paid, instance_id, iternary_id, seat_id) {
   AjaxUtils.create(
     "tickets", {
       ticket: {
         first_name: first_name,
+        middle_name: middle_name,
         last_name: last_name,
         age: age,
         gender: gender,
@@ -468,8 +469,8 @@ function createFakeItineraries() {
 }
 
 function createFakeTickets() {
-  createTicket("Yujie-1", "Tao", "20", "Female", "119.99", 4006890);
-  createTicket("Yujie-2", "Tao", "20", "Female", "999.0", 4006890);
+  createTicket("Yujie-1", "", "Tao", "20", "Female", "119.99", 4006890);
+  createTicket("Yujie-2", "", "Tao", "20", "Female", "999.0", 4006890);
   // createTicket("Yujie-3", "Tao", "20", "Female", "23.7", 874856, 13161);
   // createTicket("Yujie-4", "Tao", "20", "Female", "432.1", 874857, 13163);
   // createTicket("Yujie-5", "Tao", "20", "Female", "77.3", 874858, 13165);

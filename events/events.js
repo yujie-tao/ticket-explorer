@@ -44,8 +44,15 @@ $( document ).ready(function() {
 
     //listen to booking requests
     $(document).on( "click", ".book-submit",function() {
-        console.log($(this));
+        updateBookedTicket($(this).parent());
     });
+
+
+    //listen to selling requests
+    $(document).on( "click", "#sell-submit",function() {
+        updateSoldTicket($(this).parent().parent());
+    });
+
 
 });
 
@@ -149,7 +156,58 @@ function clearResultBox(){
 }
 
 
-function updateBookedTicket() {
+function updateBookedTicket(temp) {
+    var insId = $(temp).attr('id').split('-')[1];
+    var fName = $(temp).find('#book-fname-' + insId).val();
+    var mName = $(temp).find('#book-mname-' + insId).val();
+    var lName = $(temp).find('#book-lname-' + insId).val();
+    var gender= $(temp).find('#book-gender-' + insId).val();
+    var age   = $(temp).find('#book-age-' + insId).val();
+    var email = $(temp).find('#book-email-' + insId).val();
+    var price = $(temp).parent().find('.pricing')[0].innerText;
 
+
+    //createTicket(fName, mName, lName, age, gender, price, insId);
+    if (fName.length == 0 || lName.length == 0 || gender.length == 0 || age.length == 0 || email.length == 0) {
+        alert("insufficient information!");
+        return ;
+    }
+
+
+
+    sendConfirmationEmail(email, insId);
+}
+
+
+function sendConfirmationEmail(email, insId) {
+    alert("An email with the confirmation code: " + insId + " has been sent to: " + email + " !");
+}
+
+
+function updateSoldTicket(temp){
+    var fName = $(temp).find('#sell-fname').val();
+    var mName = $(temp).find('#sell-mname').val();
+    var lName = $(temp).find('#sell-lname').val();
+    var gender= $(temp).find('#sell-gender').val();
+    var age   = $(temp).find('#sell-age').val();
+    var email = $(temp).find('#sell-email').val();
+
+    var airline = $(temp).find('#sell-aname').val();
+    var fliNum = $(temp).find('#sell-fnum').val();
+    var insId = $(temp).find('#sell-comCode').val();
+    var depAt = $(temp).find('#sell-dePort').val();
+    var arrAt = $(temp).find('#sell-arrPort').val();
+    var sellPrice = $(temp).find('#sell-price').val();
+    var deTime = $(temp).find('#sell-deTime').val();
+    var deDate = $(temp).find('#sell-deDate').val();
+    var arrTime = $(temp).find('#sell-arrTime').val();
+    var arrDate = $(temp).find('#sell-arrDate').val();
+
+    if (insId.length == 0) {
+        alert("insufficient information!");
+        return ;
+    }
+
+    
 
 }
