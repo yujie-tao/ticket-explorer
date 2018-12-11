@@ -1,36 +1,52 @@
 var inputList = [];
 
+
+
 function passInSearch(response){
     var res = response;
     var key = Object.keys(res)[0];
     inputList = res[key];
     inputList[2] = inputList[2].split("T")[0];
-    console.log(inputList);
+    //console.log(inputList);
 }
 
+
 $( document ).ready(function() {
+    $('body').on('click', 'submit', (e)=>{
+        e.preventDefault();
+    });
+
     //listen to search bar input
     $('#ticketSearchButton').on('click', ()=> {
         var ticInput = document.getElementById("ticketSearch").value;
         if (ticInput.length == 0){
             return ;
         }
+
         clearResultBox();
-        //console.log(ticInput);
         namedEntityExtractor(ticInput);
-        console.log("Here is the info put into the searchFlight(): "+ inputList[0] + inputList[1]+ inputList[2]);
+
         searchFlight(inputList[0], inputList[1], inputList[2]);
     });
 
+
     //listen to radio event
-    $('.filter').on('click', 'input:radio', ()=> {
+    $(document).on('click', 'input:radio', ()=> {
         updateRadioFilters();
     });
 
-    // //listen to checkbox event
-    $('.filter').on('click', 'input:checkbox', ()=> {
+
+    //listen to checkbox event
+    $(document).on('click', 'input:checkbox', ()=> {
         updateCheckboxFilters();
     });
+
+
+    //listen to booking requests
+    $(document).on( "click", ".book-submit",function() {
+        console.log($(this));
+    });
+
 });
 
 
@@ -40,8 +56,7 @@ function updateRadioFilters() {
             var r = $(this).attr('id');
             if (r == "priceAsc"){
                 sortByPriceAsc();
-            }
-            else if (r == "priceDesc") {
+            } else if (r == "priceDesc") {
                 sortByPriceDesc();
             } else if (r == "timeAsc") {
                 sortByTimeAsc();
@@ -50,7 +65,7 @@ function updateRadioFilters() {
             }
         }
     });
-};
+}
 
 
 function updateCheckboxFilters() {
@@ -61,7 +76,7 @@ function updateCheckboxFilters() {
             cList.push(cThisVal);
         }
     });
-    console.log(cList);
+    //console.log(cList);
     filterByAirline(cList);
 }
 
@@ -111,16 +126,19 @@ function filterByAirline(cList){
         $(".result").each(function () {
             var airline = $(this).find(".flight").text();
             var flag = false;
-            for (var i = 0; i< cList.length; i++){
-                //checking each flight to match airline filter
-                if (cList[i] == airline) {
-                    flag = true;
-                    $(this).show();
-                    console.log("voila");
-                    return ;
-                }
+
+            //checking each flight to match airline filter
+            if (cList.indexOf(airline) > -1){
+                flag = true;
+            } else if (cList.indexOf(airline) == -1 && cList.indexOf('Other') > -1){
+                flag = true;
             }
-            $(this).hide();
+
+            if(flag == false) {
+                $(this).hide();
+            } else if (flag == true) {
+                $(this).show();
+            }
         });
     }
 }
@@ -128,4 +146,10 @@ function filterByAirline(cList){
 
 function clearResultBox(){
     $('#resultBox').empty();
+}
+
+
+function updateBookedTicket() {
+
+
 }
