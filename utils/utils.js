@@ -579,3 +579,188 @@ function authenticateUser(username, password) {
 function logOut() {
   AjaxUtils.delete("sessions");
 }
+
+
+
+function createFakeTicketsLikeABoss(n){
+    getInstances(function(instance_response){
+        for (let j=0; j < n; j++){
+            let sample_instance_response = instance_response[j];
+            let instance_date = sample_instance_response.date;
+            let instance_flight_id = sample_instance_response.flight_id;
+
+            AjaxUtils.read(
+                "flights",
+                instance_flight_id,
+                null,
+                function(flight_response){
+                    let airline_name;
+                    let arrival_code;
+                    let departure_code;
+
+                    let flight_number = flight_response.number;
+                    let flight_departs_at = flight_response.departs_at.split('T')[1].split('.')[0].split(':').splice(0,2).join(':');
+                    let flight_arrives_at = flight_response.arrives_at.split('T')[1].split('.')[0].split(':').splice(0,2).join(':');
+
+                    AjaxUtils.read(
+                        "airlines",
+                        flight_response.airline_id,
+                        null,
+                        function(airline_response){airline_name = airline_response.name;})
+
+                    AjaxUtils.read(
+                        "airports",
+                        flight_response.arrival_id,
+                        null,
+                        function(airport_response){arrival_code = airport_response.code;})
+
+                    AjaxUtils.read(
+                        "airports",
+                        flight_response.departure_id,
+                        null,
+                        function(airport_response){departure_code = airport_response.code;})
+
+                    setTimeout(function(){
+                        // console.log(
+                        _createSoldTicket(
+                            "Yujie", "WhatSoEver", "Tao",
+                            "Female", "99", "99", "233", "yujie.WhatSoEver.tao@unc.edu",
+                            airline_name, flight_number,
+                            departure_code, arrival_code,
+                            flight_departs_at, instance_date,
+                            flight_arrives_at, instance_date)
+                    }, 500);
+            }
+        
+        })
+    })
+}
+
+
+function _createSoldTicket(
+        fName, mName, lName, gender, age, price, comCode, email,
+        airline, fliNum, depAt, arrAt, deTime, deDate, arrTime, arrDate){
+
+    // //vars for ticket
+    // var fName = $(temp).find('#sell-fname').val();
+    // var mName = $(temp).find('#sell-mname').val();
+    // var lName = $(temp).find('#sell-lname').val();
+    // var gender= $(temp).find('#sell-gender').val();
+    // var age   = $(temp).find('#sell-age').val();
+    // var price = $(temp).find('#sell-price').val();
+
+
+    // var airline = $(temp).find('#sell-aname').val();    //airline
+    // var fliNum = $(temp).find('#sell-fnum').val();      //flight
+    // var comCode = $(temp).find('#sell-comCode').val();  //itinerary
+    // var email = $(temp).find('#sell-email').val();      //itinerary
+    // var depAt = $(temp).find('#sell-dePort').val();     //airport
+    // var arrAt = $(temp).find('#sell-arrPort').val();    //airport
+    // var deTime = $(temp).find('#sell-deTime').val();    //flight
+    // var deDate = $(temp).find('#sell-deDate').val();    //flight
+    // var arrTime = $(temp).find('#sell-arrTime').val();  //flight
+    // var arrDate = $(temp).find('#sell-arrDate').val();  //flight
+
+    // //check if information are correct
+    // if (airline.length === 0 || fliNum.length === 0 || comCode.length === 0 || depAt.length === 0 || arrAt.length === 0 || price.length === 0
+    //     || deTime.length === 0 || deDate.length === 0 || arrTime.length === 0 || arrDate.length === 0) {
+    //     alert("Insufficient Flight Information!");
+    //     return ;
+    // }
+    // if (fName.length === 0 || lName.length === 0 || gender.length === 0 || age.length === 0 || email.length === 0) {
+    //     alert("Insufficient User Information!")
+    // } else if (email.indexOf('@') === -1) {
+    //     alert("Invalid Email Address");
+    //     return ;
+    // }
+
+    //get airline_id
+    getAirlines(function (response) {
+        if(response.length == 0){
+            alert("Airline does not exist");
+            return;
+        }
+        var airId = response[0].id;
+        getDepAirports(airId);
+    }, {name: airline})
+
+    //get departure_id
+    function getDepAirports(airId){
+        getAirports(function (response) {
+            if(response.length == 0){
+                alert("Dep Airport does not exist");
+                return;
+            }
+            var depId = response[0].id;
+            getArrAirports(airId, depId);
+        }, {code: depAt})
+    }
+
+
+    //get arrival_id
+    function getArrAirports(airId, depId){
+        getAirports(function (response) {
+            if(response.length == 0){
+                alert("Arr Airport does not exist");
+                return;
+            }
+            var arrId = response[0].id;
+            console.log(airId, depId, arrId);
+            getCorrectFlights(airId, depId, arrId);
+        }, {code: arrAt})
+    }
+
+    //get flight_id
+    function getCorrectFlights(airId, depId, arrId) {
+        getFlights(function (response) {
+            if(response.length == 0){
+                alert("Flight does not exist");
+                return;
+            }
+            for (let i = 0; i < response.length; i++) {
+                // console.log(response);
+                // console.log(response.length);
+                let depAt = response[i].departs_at.split('T')[1].split('.')[0].split(':').splice(0,2).join(':');
+                let arrAt =  response[i].arrives_at.split('T')[1].split('.')[0].split(':').splice(0,2).join(':');
+                if (arrTime == arrAt && deTime == depAt && fliNum == response[i].number) {
+                    var fliId = response[i].id;
+                    console.log(fliId);
+                    getCorrectInstance(fliId);
+                } else {
+                    console.log("Nothing found");
+                }
+            }
+        }, {airline_id: airId, departure_id: depId, arrival_id: arrId});
+    }
+
+
+    //get instance_id
+    function getCorrectInstance(fliId){
+        getInstances(function (response) {
+            if(response.length == 0){
+                alert("Instance does not exist");
+                return;
+            }
+            var insId = response[0].id;
+            console.log("insID: "+ insId);
+            createItinerary(comCode, email);
+            getItineraryByComCode(comCode, email, insId);
+        }, {flight_id: fliId, date: deDate})
+    }
+
+
+    //create itinerary entry and retrieve itrId
+    function getItineraryByComCode(comCode, email, insId){
+        getItineraries(function (response) {
+            if(response.length == 0){
+                alert("Itinerary does not exist");
+                return;
+            }
+            var itrId = response[0].id;
+            console.log(itrId);
+            createTicket(fName, mName, lName, age, gender, price, insId, itrId);
+        }, {email: email, confirmation_code: comCode})
+    }
+
+
+}
