@@ -176,6 +176,11 @@ button{
 	margin-bottom: 100px;
 }
 
+#ticketSearchButton:hover{
+	cursor: pointer;
+	color: var(--main-black);
+}
+
 #ticketSearch{
 	background-color: white;
 }
@@ -257,11 +262,17 @@ p.noflight{
 	color: var(--main-white);
 }
 
-.book-submit{
+.book-submit,.book-submit:focus{
 	border-radius: 9999em 9999em 9999em 9999em;
 	padding: 10px;
 	background-color: var(--main-white);
 	color: var(--main-dark-purple);
+}
+
+.book-submit:hover{
+	background-color: var(--main-dark-purple);
+	color: var(--main-white);
+	cursor: pointer;
 }
 
 /* ==========================================================================
@@ -328,5 +339,8 @@ p.noflight{
  		padding-top: 100px;
  	}
 
+ 	.fa-search{
+ 		left: -50px;
+ 	}
  }
 

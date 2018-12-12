@@ -23,7 +23,8 @@ function createLogIn(){
 	}).appendTo(block1)
 	$('<input>',{
 		id: "input-username",
-		type:"text"
+		type:"text",
+		placeholder:"haha"
 	}).appendTo(block1)
 	var block2 = $('<div>',{
 		class:"block"
@@ -33,7 +34,8 @@ function createLogIn(){
 	}).appendTo(block2)
 	$('<input>',{
 		id: "input-password",
-		type:"text"
+		type: "text",
+		placeholder: "Wyxha0-fertob-zegtud"
 	}).appendTo(block2)
 	
 	var link = $('<a>',{
@@ -45,6 +47,6 @@ function createLogIn(){
 		type:"submit",
 		html: "Sign In",
 		class:"submit-btn",
-		onclick: "sayHello()"
+		onclick: "authticateUser()"
 	}).appendTo(link)
 }

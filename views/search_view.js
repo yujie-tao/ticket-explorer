@@ -19,7 +19,7 @@ function createSearchBar(){
 	$('<i>',{
 		id: "ticketSearchButton",
 		// type: "button",
-		class: "fas fa-search col-lg-1 col-1"
+		class: "fas fa-search"
 	}).appendTo(searchBox)
 }
 
@@ -367,8 +367,9 @@ function createGrid(logourl,airline,flightNum,
 }
 
 function flightNotFound(){
-	$('.searchFilter').remove();
+	$('.searchFilter').empty();
 	$('.resultBox').empty();
+	$('.noflight').remove();
 
 	$('<h3>',{
 		html: "( ¯•ω•¯ )",
@@ -378,5 +379,10 @@ function flightNotFound(){
 		html: "No flights found!",
 		class: "noflight col-lg-12"
 	}).appendTo('.searchResult')
+}
+
+function submitForm(){
+	alert("Ticket submitted!");
+	location.reload();
 }
 

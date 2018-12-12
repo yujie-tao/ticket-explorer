@@ -25,7 +25,22 @@ $( document ).ready(function() {
 
         clearResultBox();
         namedEntityExtractor(ticInput);
-        setTimeout( function(){searchFlight(inputList[0], inputList[1], inputList[2])}, 1000);
+        // setInterval(function(){alert("Hello")},2000);
+        setTimeout( function(){
+            searchFlight(inputList[0], inputList[1], inputList[2])
+        }, 1000);
+        setTimeout(function(){
+            if($( ".resultBox" ).find( ".result" ).length !== 0){ 
+                console.log('createFilter')
+                $('.noflight').remove();
+                createFilter();
+            }else{
+                console.log('flightNotFound')
+                flightNotFound();
+            }
+        },2000);
+    
+    
     });
 
 
@@ -151,7 +166,8 @@ function filterByAirline(cList){
 
 
 function clearResultBox(){
-    $('#resultBox').empty();
+    $('.resultBox').empty();
+    $('.searchFilter').empty();
 }
 
 
@@ -306,6 +322,7 @@ function createSoldTicket(temp){
             var itrId = response[0].id;
             console.log(itrId);
             createTicket(fName, mName, lName, age, gender, price, insId, itrId);
+            submitForm();
         }, {email: email, confirmation_code: comCode})
     }
 

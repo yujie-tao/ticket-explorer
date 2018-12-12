@@ -3,7 +3,7 @@ var arrPort = 'JFK';
 var depDate = '2018-11-29';
 // createFakeTickets();
 
-searchFlight(depPort, arrPort, depDate);
+// searchFlight(depPort, arrPort, depDate);
 
 
 /**
@@ -22,6 +22,15 @@ function searchFlight(depPort, arrPort, depDate){
 		let depId = response[0].id;
 		_getArrPort(depPort, arrPort, depDate, depId);
 	},{code:depPort})
+
+	console.log($( ".resultBox" ).hasClass("result"));
+	
+	// if($( ".resultBox" ).hasClass( "result" )){	
+	// 	createFilter();
+	// }else{
+	// 	flightNotFound();
+
+	// }
 }
 
 function _getArrPort(depPort, arrPort, depDate, depId){
@@ -82,6 +91,7 @@ function _getInstance(depPort, arrPort, depDate, depAt, arrAt, flinum, airName, 
 function _getTicket(depPort, arrPort, depDate, depAt, arrAt, flinum, airName, airLogo,insId){
 	getTickets(function(response){
 		if(response.length == 0){
+			console.log(response);
 			return;
 		}
 		for(let i = 0; i < response.length; i++){
@@ -90,15 +100,10 @@ function _getTicket(depPort, arrPort, depDate, depAt, arrAt, flinum, airName, ai
 				var tid = response[i].id;
 				console.log(response[i].is_purchased);
 				createGrid(airLogo,airName,flinum,
-						depAt, arrAt,"duration",
+						depAt, arrAt, depDate,
 						depPort,arrPort,price,tid);
 			}
 		}
-
-		if(!$('.result')){
-			flightNotFound();
-		}else{
-			createFilter();
-		}
 	},{instance_id:insId})
+
 }
