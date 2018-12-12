@@ -139,7 +139,7 @@ function sortByTimeDesc() {
 
 
 function filterByAirline(cList){
-
+    console.log(cList);
     //if no filter show all options
     if(cList.length == 0){
         $(".result").show();
@@ -151,7 +151,7 @@ function filterByAirline(cList){
             //checking each flight to match airline filter
             if (cList.indexOf(airline) > -1){
                 flag = true;
-            } else if (cList.indexOf(airline) == -1 && cList.indexOf('Other') > -1){
+            } else if (cList.indexOf('other') > -1){
                 flag = true;
             }
 
