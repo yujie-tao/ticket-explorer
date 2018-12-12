@@ -583,8 +583,8 @@ function logOut() {
 
 
 function createFakeTicketsLikeABoss(n){
-    getInstances(function(instance_response){
-        for (let j=0; j < n; j++){
+    getInstances(function(instance_response) {
+        for (let j = 0; j < n; j++) {
             let sample_instance_response = instance_response[j];
             let instance_date = sample_instance_response.date;
             let instance_flight_id = sample_instance_response.flight_id;
@@ -593,34 +593,40 @@ function createFakeTicketsLikeABoss(n){
                 "flights",
                 instance_flight_id,
                 null,
-                function(flight_response){
+                function (flight_response) {
                     let airline_name;
                     let arrival_code;
                     let departure_code;
 
                     let flight_number = flight_response.number;
-                    let flight_departs_at = flight_response.departs_at.split('T')[1].split('.')[0].split(':').splice(0,2).join(':');
-                    let flight_arrives_at = flight_response.arrives_at.split('T')[1].split('.')[0].split(':').splice(0,2).join(':');
+                    let flight_departs_at = flight_response.departs_at.split('T')[1].split('.')[0].split(':').splice(0, 2).join(':');
+                    let flight_arrives_at = flight_response.arrives_at.split('T')[1].split('.')[0].split(':').splice(0, 2).join(':');
 
                     AjaxUtils.read(
                         "airlines",
                         flight_response.airline_id,
                         null,
-                        function(airline_response){airline_name = airline_response.name;})
+                        function (airline_response) {
+                            airline_name = airline_response.name;
+                        })
 
                     AjaxUtils.read(
                         "airports",
                         flight_response.arrival_id,
                         null,
-                        function(airport_response){arrival_code = airport_response.code;})
+                        function (airport_response) {
+                            arrival_code = airport_response.code;
+                        })
 
                     AjaxUtils.read(
                         "airports",
                         flight_response.departure_id,
                         null,
-                        function(airport_response){departure_code = airport_response.code;})
+                        function (airport_response) {
+                            departure_code = airport_response.code;
+                        })
 
-                    setTimeout(function(){
+                    setTimeout(function () {
                         // console.log(
                         _createSoldTicket(
                             "Yujie", "WhatSoEver", "Tao",
@@ -630,9 +636,9 @@ function createFakeTicketsLikeABoss(n){
                             flight_departs_at, instance_date,
                             flight_arrives_at, instance_date)
                     }, 500);
-            }
-        
-        })
+                })
+
+        }
     })
 }
 
