@@ -99,6 +99,7 @@ function _getTicket(depPort, arrPort, depDate, depAt, arrAt, flinum, airName, ai
 				var price = response[i].price_paid;
 				var tid = response[i].id;
 				console.log(response[i].is_purchased);
+				$('.noflight').remove();
 				createGrid(airLogo,airName,flinum,
 						depAt, arrAt, depDate,
 						depPort,arrPort,price,tid);

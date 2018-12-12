@@ -15,8 +15,9 @@ $( document ).ready(function() {
     $('body').on('click', 'submit', (e)=>{
         e.preventDefault();
     });
-
+    // createFilter();
     //listen to search bar input
+    $('.noflight').remove();
     $('#ticketSearchButton').on('click', ()=> {
         var ticInput = document.getElementById("ticketSearch").value;
         if (ticInput.length === 0){
