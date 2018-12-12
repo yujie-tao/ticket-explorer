@@ -1,9 +1,6 @@
 $( document ).ready(function() {
 	createSearchBar();
-	createFilter();
 });
-
-
 
 function createSearchBar(){
 	var searchBox= $('<div>',{
@@ -27,7 +24,11 @@ function createSearchBar(){
 }
 
 function createFilter(){
-	var filter= $('.searchFilter');
+	var filterBox= $('.searchFilter');
+	var filter = $('<div>',{
+		class:"filterBox"
+	}).appendTo(filterBox)
+
 	var sorter= $('<div>',{
 		class: "mulSorter filter"
 	}).appendTo(filter)

@@ -88,6 +88,7 @@ function _getTicket(depPort, arrPort, depDate, depAt, arrAt, flinum, airName, ai
 			if(response[i].is_purchased == false){
 				var price = response[i].price_paid;
 				var tid = response[i].id;
+				console.log(response[i].is_purchased);
 				createGrid(airLogo,airName,flinum,
 						depAt, arrAt,"duration",
 						depPort,arrPort,price,tid);
@@ -96,6 +97,8 @@ function _getTicket(depPort, arrPort, depDate, depAt, arrAt, flinum, airName, ai
 
 		if(!$('.result')){
 			flightNotFound();
+		}else{
+			createFilter();
 		}
 	},{instance_id:insId})
 }
