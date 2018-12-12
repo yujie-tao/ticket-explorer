@@ -179,6 +179,7 @@ function updateBookedTicket(temp) {
     var gender= $(temp).find('#book-gender-' + ticId).val();
     var age   = $(temp).find('#book-age-' + ticId).val();
     var email = $(temp).find('#book-email-' + ticId).val();
+    $("#book-submit-28949").parent().find('#book-email-28949').val()
 
 
     //check if information are correct
@@ -190,17 +191,22 @@ function updateBookedTicket(temp) {
         return ;
     }
 
-
+    console.log(ticId);
     //retrieve the itinerary id and update both itinerary and ticket tables
     getTicket(function(response){
+        if(response.length == 0){
+            alert("Ticket does not exist");
+            return;
+        }
         var itrId = response.itinerary_id;
-        updateTicket(fName, mName, lName, age, gender, ticId);
+        var flag = 1;
+        updateTicket(fName, mName, lName, age, gender, ticId, flag);
         updateItinerary(itrId, email);
 
         alert('Purchase successful!');
         $(temp).parent().fadeOut(300, function() { $(temp).parent().remove(); });
 
-        }, { ticket_id : ticId } )
+        }, ticId)
 
 
 }
