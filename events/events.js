@@ -151,8 +151,10 @@ function filterByAirline(cList){
             //checking each flight to match airline filter
             if (cList.indexOf(airline) > -1){
                 flag = true;
-            } else if (cList.indexOf('other') > -1){
+            } else if (cList.indexOf(airline) > -1 && cList.indexOf('other') > -1){
                 flag = true;
+            } else if (cList.indexOf(airline) == -1 && cList.indexOf('other') > -1){
+                flag = false;
             }
 
             if(flag == false) {
