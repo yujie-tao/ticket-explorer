@@ -308,7 +308,7 @@ function getTickets(response_fn = _PrintResponse, filter_dict = null) {
 //Read ------------------------------------------------------------
 function getTicket(response_fn = _PrintResponse, ticId) {
     AjaxUtils.read(
-        "tickets", ticId, '',
+        "tickets", ticId, null,
         response_fn,
         function(response) {
             alert("getTicket Failed");
@@ -427,7 +427,7 @@ function createTicket(first_name, middle_name, last_name, age, gender, price_pai
 }
 
 
-function updateTicket(first_name, middle_name, last_name, age, gender, ticket_id) {
+function updateTicket(first_name, middle_name, last_name, age, gender, ticket_id, flag) {
     AjaxUtils.update(
         "tickets", ticket_id,
         {
@@ -437,7 +437,7 @@ function updateTicket(first_name, middle_name, last_name, age, gender, ticket_id
                 last_name: last_name,
                 age: age,
                 gender: gender,
-                is_purchased: true
+                is_purchased: flag
             }
         });
 }
