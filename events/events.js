@@ -26,17 +26,14 @@ $( document ).ready(function() {
 
         clearResultBox();
         namedEntityExtractor(ticInput);
-        // setInterval(function(){alert("Hello")},2000);
         setTimeout( function(){
             searchFlight(inputList[0], inputList[1], inputList[2])
         }, 1000);
         setTimeout(function(){
             if($( ".resultBox" ).find( ".result" ).length !== 0){ 
-                console.log('createFilter')
                 $('.noflight').remove();
                 createFilter();
             }else{
-                console.log('flightNotFound')
                 flightNotFound();
             }
         },2000);
@@ -152,10 +149,8 @@ function filterByAirline(cList){
             //checking each flight to match airline filter
             if (cList.indexOf(airline) > -1){
                 flag = true;
-            } else if (cList.indexOf(airline) > -1 && cList.indexOf('other') > -1){
+            } else if (cList.indexOf(airline) == -1 && cList.indexOf('other') > -1) {
                 flag = true;
-            } else if (cList.indexOf(airline) == -1 && cList.indexOf('other') > -1){
-                flag = false;
             }
 
             if(flag == false) {

@@ -111,9 +111,9 @@ button{
 	color: var(--main-dark-grey);
 }
 
-.navbar-dark .navbar-toggler{
+/*.navbar-dark .navbar-toggler{
 	border-color: var(--main-white);
-}
+}*/
 
 .btn-link:hover{
 	color: inherit;
