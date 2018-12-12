@@ -82,9 +82,9 @@ class AjaxUtils {
     error_fn = _DefaultErrorFn("delete")) {
 
     if (id === null) {
-      let url = `${API_ROOT}${resouce}/${id}`;
+      var url = `${API_ROOT}${resouce}/${id}`;
     } else {
-      let url = API_ROOT + resouce;
+      var url = API_ROOT + resouce;
     }
 
     $.ajax({
@@ -93,7 +93,7 @@ class AjaxUtils {
       xhrFields: {
         withCredentials: true
       },
-      data: data,
+
       success: succuss_fn,
       error: error_fn
     });
@@ -317,6 +317,17 @@ function getTicket(response_fn = _PrintResponse, ticId) {
 }
 
 
+function getItinerary(response_fn = _PrintResponse, itrId) {
+    AjaxUtils.read(
+        "itineraries", itrId, '',
+        response_fn,
+        function(response) {
+            alert("getItinerary Failed");
+        }
+    )
+}
+
+
 // Create ---------------------------------------------------------
 function createFlight(departs_at, arrives_at, number, departure_id, arrival_id) {
   AjaxUtils.create(
@@ -397,7 +408,7 @@ function createItinerary(confirmation_code, email) {
 }
 
 
-function createTicket(first_name, middle_name, last_name, age, gender, price_paid, instance_id, iternary_id, seat_id) {
+function createTicket(first_name, middle_name, last_name, age, gender, price_paid, instance_id, itinerary_id, seat_id) {
   AjaxUtils.create(
     "tickets", {
       ticket: {
@@ -409,7 +420,7 @@ function createTicket(first_name, middle_name, last_name, age, gender, price_pai
         is_purchased: false,
         price_paid: price_paid,
         instance_id: instance_id,
-        // iternary_id: iternary_id
+        itinerary_id: itinerary_id
         //seat_id: seat_id
       }
     });
@@ -432,13 +443,12 @@ function updateTicket(first_name, middle_name, last_name, age, gender, ticket_id
 }
 
 
-function updateItinerary(itrId, email, comCode) {
+function updateItinerary(itrId, email) {
     AjaxUtils.update(
         "itineraries", itrId,
         {
             itinerary: {
-                email: email,
-                confirmation_code: comCode
+                email: email
             }
         });
 }
