@@ -6,7 +6,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 CORS(app)
-textrazor.api_key = "
+textrazor.api_key = None
 client = textrazor.TextRazor(extractors=["entities", "topics"])
 
 
